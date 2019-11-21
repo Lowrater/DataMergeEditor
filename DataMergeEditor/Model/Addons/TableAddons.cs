@@ -640,7 +640,8 @@ namespace DataMergeEditor.Model
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Some files are broken or moved from fetched location. Please verify files.",
+                        MessageBox.Show("Some files are broken or moved from " +
+                            "fetched location. Please verify files.",
                             "DataMergeEditor - Merging message",
                             MessageBoxButton.OK,
                             MessageBoxImage.Information);
