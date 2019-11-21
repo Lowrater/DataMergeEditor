@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="DataMergeEditor.View.UserControls.NewScriptNoteView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ViewModel="clr-namespace:DataMergeEditor.ViewModel"
+             mc:Ignorable="d" 
+             DataContext="{Binding NewScript,Source={StaticResource Locator}}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <TextBox Name="MainTextBox" Text="{Binding Path=ScriptContentString, Mode=TwoWay,
+                UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True"  >
+                <TextBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Open sql script" Command="{Binding OpenScriptsCommand}">
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/sql_commands_icon.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Save sql script" Command="{Binding SaveScriptCommand}">
+                            <ToolTipService.ToolTip>
+                                <Border>
+                                    <TextBlock Text="Marking the text and hitting CTRL + S will do the same." />
+                                </Border>
+                            </ToolTipService.ToolTip>
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/sql_commands_icon.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Run script" Command="{Binding RunThisScriptCommand}">
+                            <ToolTipService.ToolTip>
+                                <Border>
+                                    <TextBlock Text="Executes this script" />
+                                </Border>
+                            </ToolTipService.ToolTip>
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/execute_script_icon.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </TextBox.ContextMenu>
+                <TextBox.InputBindings>
+                    <KeyBinding Command="{Binding SaveScriptCommand}" Key="S" Modifiers="Ctrl"/>
+                </TextBox.InputBindings>
+                <ToolTipService.ToolTip>
+                    <Border>
+                        <TextBlock Text="This is the script note field where you write and save scripts as wished" />
+                    </Border>
+                </ToolTipService.ToolTip>
+            </TextBox>
+        </ScrollViewer>
+    </Grid>
+</UserControl>
+
+
+

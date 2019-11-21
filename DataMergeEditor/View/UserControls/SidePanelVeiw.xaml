@@ -1,0 +1,200 @@
+﻿<UserControl x:Class="DataMergeEditor.View.UserControls.SidePanelVeiw"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DataMergeEditor.View.UserControls"
+             xmlns:userControls="clr-namespace:DataMergeEditor.View.UserControls"
+             xmlns:ViewModel="clr-namespace:DataMergeEditor.ViewModel"
+              DataContext="{Binding Sidepanel,Source={StaticResource Locator}}"
+             mc:Ignorable="d" 
+             d:DesignHeight="440" d:DesignWidth="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu VerticalAlignment='Top' Height="25" Background="White">
+            <MenuItem Name="SettingsMenuItem" Command="{Binding StartSettingsWindowCommand}" Width="25">
+                <ToolTipService.ToolTip>
+                    <Border>
+                        <TextBlock Text="Opens the settings window" />
+                    </Border>
+                </ToolTipService.ToolTip>
+                <MenuItem.Icon>
+                    <Image Source="/Resources/settings.ico"/>
+                </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Name="HelpMenu"  Command="{Binding StartHelpWindowCommand}" Width="25">
+                <ToolTipService.ToolTip>
+                    <Border>
+                        <TextBlock Text="Opens the help guide window." />
+                    </Border>
+                </ToolTipService.ToolTip>
+                <MenuItem.Icon>
+                    <Image Source="/Resources/help_icon.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
+        </Menu>
+        <TabControl Grid.Row="1">
+            <!-- Databases - TAB-->
+            <TabItem Header="Databases">
+                <ToolTipService.ToolTip>
+                    <Border>
+                        <TextBlock>Databases overview</TextBlock>
+                    </Border>
+                </ToolTipService.ToolTip>
+                <!-- Indholdet af DatabaseConnectionView -->
+                <userControls:DatabaseConnectionView>
+                </userControls:DatabaseConnectionView>
+            </TabItem>
+            <!-- FILE TAB-->
+            <TabItem Header="File and table">
+                <ToolTipService.ToolTip>
+                    <Border>
+                        <TextBlock Text="File and table tab, within it's fetching options" />
+                    </Border>
+                </ToolTipService.ToolTip>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <!-- Row 1 Add files row-->
+                        <RowDefinition Height="30"/>
+                        <!-- Row 2 Add from DB row -->
+                        <RowDefinition Height="30"/>
+                        <!-- Row 3 remove form DB -->
+                        <RowDefinition Height="30"/>
+                        <!-- Row 4 file dilemiter -->
+                        <RowDefinition Height="30"/>
+                        <!-- Row 5 Delimiter form DB -->
+                        <RowDefinition Height="30"/>
+                        <!-- Row 6 - For listboxen -->
+                        <RowDefinition Height="*"/>
+                        <!-- Row 7 - For listboxen -->
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="90"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Knapper for filer / tabeller -->
+                    <Button Name="btnAddFromfile" Content="Add file" 
+                            Height="20" Width="80" Grid.Row="0" Grid.Column="0"  
+                            Command="{Binding AddFilesToObservableCollectionCommand}">
+                        <ToolTipService.ToolTip>
+                            <Border>
+                                <TextBlock Text="Starts a file explorer to fetch files" />
+                            </Border>
+                        </ToolTipService.ToolTip>
+                    </Button>
+                    <Button Name="btnAddFromTB" Content="Add DB table" 
+                            Height="20" Width="80" Grid.Row="1" Grid.Column="0" 
+                            Command="{Binding AddTablesFromDBCommand}" IsEnabled="{Binding ActiveConnection}">
+                        <ToolTipService.ToolTip>
+                            <Border>
+                                <TextBlock Text="Opens a new window to fetch data base tables." />
+                            </Border>
+                        </ToolTipService.ToolTip>
+                    </Button>
+                    <Button Name="btnRemoveFileOrTB" Content="Remove" 
+                            Height="20" Width="80" Grid.Row="2" Grid.Column="0" 
+                            Command="{Binding RemoveFromListBoxCommand}" 
+                            CommandParameter="{Binding ElementName=FileListBox, Path=SelectedItem}" 
+                            IsEnabled="{Binding RemoveIsEnabledBool}">
+                        <ToolTipService.ToolTip>
+                            <Border>
+                                <TextBlock Text="Removes selected table or file from the list (and grid)" />
+                            </Border>
+                        </ToolTipService.ToolTip>
+                    </Button>
+                    <!-- Delimiter, hvis der er eks. , istedet for ; som opdeler kolonner og rows -->
+                    <TextBlock Height="20" Width="80" Grid.Row="3" Text="File delimiter" TextAlignment="Center"></TextBlock>
+                    <TextBox DataContext="{Binding Main,Source={StaticResource Locator}}" 
+                             Height="20" Width="80" Grid.Row="4" Text="{Binding FileDelimiter, Mode=TwoWay, 
+                             UpdateSourceTrigger=PropertyChanged}" >
+                        <ToolTipService.ToolTip>
+                            <Border>
+                                <TextBlock Text="Delimiter for files. If the files uses anything
+                                           else than the default ';' then you can change it here. (globally)" />
+                            </Border>
+                        </ToolTipService.ToolTip>
+                    </TextBox>
+                    <Grid Grid.Row="0" Grid.Column="1" Margin="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Image Grid.Column="0" Source="/Resources/type_icon_side_panel.png" Height="23" HorizontalAlignment="Center" 
+                               VerticalAlignment="Center"></Image>
+                        <TextBlock Grid.Column="1" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" >Type</TextBlock>
+                        <TextBlock Grid.Column="2" TextAlignment="Center" HorizontalAlignment="Right" VerticalAlignment="Center">Content</TextBlock>
+                        <Image Grid.Column="3" Source="/Resources/box_icon_side_panel.png" Height="23" HorizontalAlignment="Center"
+                               VerticalAlignment="Center"></Image>
+                    </Grid>
+                    <!-- grid splitter -->
+                    <GridSplitter  VerticalAlignment="Top" HorizontalAlignment="Stretch" 
+                                   Height="5"  Grid.Row="6" Grid.Column="1"
+                                   Background="Black" Width="50"/>
+                    <!-- RowSpan 4, merger row 1-4 sammen så listboxen kan være der.-->
+                    <!-- Listbox skal indeholde filerne og tabeller fra en DB-->
+                    <ListBox x:Name="FileListBox"  Margin="5,5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
+                             Grid.Column="1" Grid.RowSpan="5" Grid.Row="1" SelectedIndex="{Binding IsSelected}"
+                             ItemsSource="{Binding MainListContainer, UpdateSourceTrigger=PropertyChanged}"
+                             SelectionMode="Extended">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{}{0}, {1}">
+                                            <Binding Path="DatabaseName"/>
+                                            <Binding Path="Type"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                        <!-- RowSpan 5, merger row 1-4 sammen så listboxen kan være der.-->
+                        <ToolTipService.ToolTip>
+                            <Border>
+                                <TextBlock Text="This list will display any file or database table you add." />
+                            </Border>
+                        </ToolTipService.ToolTip>
+                    </ListBox>
+                </Grid>
+            </TabItem>
+            <!-- FILTER TAB-->
+            <TabItem Header="Filter">
+                <ToolTipService.ToolTip>
+                    <Border>
+                        <TextBlock>Displays filter tab</TextBlock>
+                    </Border>
+                </ToolTipService.ToolTip>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition  />
+                            <ColumnDefinition  />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Content="Clear TextBoxes" Command="{Binding ClearTextBoxCommand}"/>
+                        <Button Grid.Column="1" Content="Add TextBox" Command="{Binding AddTextBoxCommand}"/>
+                        <Button DataContext="{Binding Main,Source={StaticResource Locator}}" Grid.Column="2" Content="Apply to grid"
+                                Command="{Binding RefreshMainGridWithFiltersCommand}"/>
+                    </Grid>
+                    <!-- Bindes til TextBoxCollection som har alle textboxene-->
+                    <ScrollViewer Grid.Row="1">
+                        <ItemsControl  ItemsSource="{Binding TextBoxCollection}">
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>
+
+    

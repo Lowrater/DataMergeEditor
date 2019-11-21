@@ -1,0 +1,690 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Model oversigt">
+    <Position X="24.594" Y="1.031" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Window oversigt&#xD;&#xA;">
+    <Position X="11.044" Y="0.781" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Abstacte klasser&#xD;&#xA;">
+    <Position X="1.25" Y="0.75" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Enums&#xD;&#xA;">
+    <Position X="10.285" Y="19.597" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Interfaces">
+    <Position X="15.245" Y="18.825" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Usercontrols">
+    <Position X="0.929" Y="18.691" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Statiske klasser">
+    <Position X="1.5" Y="11.5" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="ViewModeller&#xD;&#xA;">
+    <Position X="55.119" Y="2.072" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Services&#xD;&#xA;">
+    <Position X="0.69" Y="26.053" Height="0.75" Width="1.7" />
+  </Comment>
+  <Class Name="DataMergeEditor.Model.TableAddons">
+    <Position X="3.25" Y="12.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>EAAAAARBQABAAAAAABIAAAAQAgAAAAAgCAAUAIAAAEA=</HashCode>
+      <FileName>Model\Addons\TableAddons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.App">
+    <Position X="15.25" Y="28" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.MainWindowView" BaseTypeListCollapsed="true">
+    <Position X="11" Y="9" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\MainWindowView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.Interfaces.DataConnection">
+    <Position X="3.25" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>hAQAACAAABAAAAQAAAAIAAWAEAAAAAAgAQAAAIAAAgA=</HashCode>
+      <FileName>DBConnect\Data\DataConnection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataMergeEditor.DBConnect.Data.ListData.ContentList">
+    <Position X="35.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAABAAA=</HashCode>
+      <FileName>DBConnect\Data\ListData\ContentList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.DBConnect.Data.MssqlDataConnection">
+    <Position X="0.5" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>hAQAACAAABAAAAQAAAAJAAWAEAAAAAAgAQAAAIAAAgA=</HashCode>
+      <FileName>DBConnect\Data\MssqlDataConnection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.DBConnect.Data.OracleDataConnection">
+    <Position X="3" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>hAQAACAAABAAAAQAAAAJAAWAEAAAAAAgAQAAAIAAAgA=</HashCode>
+      <FileName>DBConnect\Data\OracleDataConnection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.DBConnect.MySqlDataConnection">
+    <Position X="5.5" Y="5.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>hAQAACAAABAAAAQAAAAJAAWAEAAAAAAgAQAAAIAAAgA=</HashCode>
+      <FileName>DBConnect\Data\MySqlDataConnection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.DBConnect.Data.TreeData.MssqlTree" BaseTypeListCollapsed="true">
+    <Position X="38" Y="8.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAECAAAAA=</HashCode>
+      <FileName>DBConnect\Data\TreeData\MssqlTree.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.DBConnect.Data.TreeData.MysqlTree" BaseTypeListCollapsed="true">
+    <Position X="38" Y="13.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAECAAAAA=</HashCode>
+      <FileName>DBConnect\Data\TreeData\MysqlTree.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.DBConnect.Data.TreeData.OracleTree" BaseTypeListCollapsed="true">
+    <Position X="38" Y="11" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAIAAAAABAAAAAAAAAAAECAAAAA=</HashCode>
+      <FileName>DBConnect\Data\TreeData\OracleTree.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.Services.DataService" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="27.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAAAAEEgkAAAQAAAAAAAAAAQAAAAAAAAAAAAACAABAA=</HashCode>
+      <FileName>Services\DataService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.Messages.ConnectionMessages">
+    <Position X="35.5" Y="8.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAASAAAAABQAA=</HashCode>
+      <FileName>Messages\ConnectionMessages.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.Model.CommandsModel">
+    <Position X="35.5" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQADABAEAAgACCAAIAAIABAAAAAQAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Model\Addons\CommandsModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.Model.Compare_tabItemModel">
+    <Position X="56.75" Y="10.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>EAACQyCABBAAMkkCAoABAABKAAIgoCpkRAAAgPERIQI=</HashCode>
+      <FileName>Model\Compare_tabItemModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.Model.DatabaseConnectionModel">
+    <Position X="29.75" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAMAAAAEAAghAAAAQAABAAQAAAAAQ=</HashCode>
+      <FileName>Model\DatabaseConnectionModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.Model.DataGridModel">
+    <Position X="38" Y="2" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAACAAAAAAAABAAAAACAEAAAABBEiAAA=</HashCode>
+      <FileName>Model\DataGridModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.Model.GetTablesFromDBModel">
+    <Position X="35.5" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAABgAAAAAAEAAAAAAQACAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\GetTablesFromDBModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.Model.MainTableModel">
+    <Position X="26.75" Y="2" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AFgAA6UBIBCQhEAiCiAAg4ECAASAoGIgJSAMoAEAIAA=</HashCode>
+      <FileName>Model\MainTableModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.Model.NewQueryModel">
+    <Position X="26.75" Y="13.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AgpAE4UFhACYlEAAICIBAJEKIAACocBkJIAKoAAlKBA=</HashCode>
+      <FileName>Model\NewQueryModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.Model.NewTabItemModel">
+    <Position X="38" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAgAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\NewTabItemModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.Model.SettingsWindowModel">
+    <Position X="29.75" Y="5.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>gAAGAQAgAQAQAADAAAAAUABIAAAAAAEAAAAADAAAAAA=</HashCode>
+      <FileName>Model\SettingsWindowModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.Model.SidePanelListModel">
+    <Position X="32.5" Y="2" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAACABARQMEAACEWAAIAAAEQQAAAIAAAIAAA=</HashCode>
+      <FileName>Model\SidePanelListModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.Model.Exports.DbBlobFile">
+    <Position X="3" Y="31.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>Model\Addons\DbBlobFile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.Model.Exports.ExportGrid">
+    <Position X="3" Y="29.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAABAAAAAAAI=</HashCode>
+      <FileName>Model\Addons\ExportGrid.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.TabelSearchHelper.DataGridTextSearch">
+    <Position X="0.75" Y="14.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAEAEAAAAAABABAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Addons\TabelSearchHelper\DataGridTextSearch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.TabelSearchHelper.SearchValueConverter" BaseTypeListCollapsed="true">
+    <Position X="38" Y="15.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Addons\TabelSearchHelper\SearchValueConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.Model.Addons.TableSyncHelper.ScrollSynchronizer">
+    <Position X="35.5" Y="11.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAQABIAAAAAggAAAAAAAAAAAAAAAACCACgAAAAAAA=</HashCode>
+      <FileName>Model\Addons\TableSyncHelper\ScrollSynchronizer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.TextBoxHelper.TextBoxHelper">
+    <Position X="0.75" Y="12.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQBAABABAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Addons\TextBoxHelper\TextBoxHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.Model.Addons.TreeAddons">
+    <Position X="3" Y="27.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Addons\TreeAddons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.Model.Connections.mssql_connectionModel">
+    <Position X="24.5" Y="5.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAICAAAAKAAAAAEAAAAAAAgAAAAAAAAAIAEAQgAAA=</HashCode>
+      <FileName>Model\Connections\mssql_connectionModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.Model.Connections.mysql_connectionModel">
+    <Position X="29.75" Y="10.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>QAAAAQBIAAAAAAAAAAAAAAABgACAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Connections\mysql_connectionModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.Model.Connections.oracle_connectionModel">
+    <Position X="24.5" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAgAAAAQAAAAQAABAQAAAAAABABAAAAAGACEAA=</HashCode>
+      <FileName>Model\Connections\oracle_connectionModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.Model.Connections.Odbc.odbc_addons">
+    <Position X="3" Y="28.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Connections\Odbc\odbc_addons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.Properties.Resources">
+    <Position X="13.25" Y="27.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.Properties.Settings">
+    <Position X="16.75" Y="28.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.View.UserControls.Compare_tabItem" BaseTypeListCollapsed="true">
+    <Position X="6" Y="20" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UserControls\Compare_tabItem.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.UserControls.DatabaseConnectionView" BaseTypeListCollapsed="true">
+    <Position X="3.5" Y="20" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UserControls\DatabaseConnectionView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.UserControls.MainRelationsTabItem" BaseTypeListCollapsed="true">
+    <Position X="1" Y="20" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UserControls\MainRelationsTabItem.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.UserControls.MainTableView" BaseTypeListCollapsed="true">
+    <Position X="3.5" Y="22" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UserControls\MainTableView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.UserControls.MainTableViewTabItem" BaseTypeListCollapsed="true">
+    <Position X="1" Y="22" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UserControls\MainTableViewTabItem.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.UserControls.NewQueryTabItem" BaseTypeListCollapsed="true">
+    <Position X="6" Y="22" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UserControls\NewQueryTabItem.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.UserControls.NewScriptNoteView" BaseTypeListCollapsed="true">
+    <Position X="1" Y="23.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UserControls\NewScriptNoteView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.UserControls.SidePanelVeiw" BaseTypeListCollapsed="true">
+    <Position X="3.5" Y="23.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\UserControls\SidePanelVeiw.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.Connections.ms_access_connection_window" BaseTypeListCollapsed="true">
+    <Position X="11" Y="5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\Connections\ms_access_connection_window.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.Connections.mssql_connection_window" BaseTypeListCollapsed="true">
+    <Position X="11" Y="1.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\Connections\mssql_connection_window.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.Connections.MySQL_panel_connection_window" BaseTypeListCollapsed="true">
+    <Position X="11" Y="6.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\Connections\MySQL_panel_connection_window.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.Connections.oracle_connection_window" BaseTypeListCollapsed="true">
+    <Position X="11" Y="10.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\Connections\oracle_connection_window.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.Connections.postgresql_connection_window" BaseTypeListCollapsed="true">
+    <Position X="14" Y="15.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\Connections\postgresql_connection_window.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.Connections.sqllite_connection_windowxaml" BaseTypeListCollapsed="true">
+    <Position X="11" Y="3.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\Connections\sqllite_connection_windowxaml.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.Exports.ExportToExternalDatabaseWindowMain" BaseTypeListCollapsed="true">
+    <Position X="14.25" Y="5.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\Exports\ExportToExternalDatabaseWindowMain.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.Exports.ExportToExternalDatabaseWindowNewQuery" BaseTypeListCollapsed="true">
+    <Position X="14.25" Y="1.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\Exports\ExportToExternalDatabaseWindowNewQuery.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.FindWordWindow" BaseTypeListCollapsed="true">
+    <Position X="14.25" Y="3.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\FindWordWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.GetTablesFromDBWindow" BaseTypeListCollapsed="true">
+    <Position X="18" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\GetTablesFromDBWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.HelpWindow" BaseTypeListCollapsed="true">
+    <Position X="18" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\HelpWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.NewColumnWindow" BaseTypeListCollapsed="true">
+    <Position X="11" Y="14.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\NewColumnWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.RenameColumHeaderWindow" BaseTypeListCollapsed="true">
+    <Position X="18" Y="11" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\RenameColumHeaderWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.RenameTabHeaderMainDataGridWindow" BaseTypeListCollapsed="true">
+    <Position X="14.25" Y="7" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\RenameTabs\RenameTabHeaderMainDataGridWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.RenameTabHeaderNewQueryWindow" BaseTypeListCollapsed="true">
+    <Position X="14.25" Y="9" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\RenameTabs\RenameTabHeaderNewQueryWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.ReplaceWordsInColumnMainWindow" BaseTypeListCollapsed="true">
+    <Position X="14.25" Y="11" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\ReplaceWords\ReplaceWordsInColumnMainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.ReplaceWordsInCommandMainWindow" BaseTypeListCollapsed="true">
+    <Position X="18" Y="9" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\ReplaceWords\ReplaceWordsInCommandMainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.ReplaceWordsInCommandNewQueryWindow" BaseTypeListCollapsed="true">
+    <Position X="14" Y="13.25" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\ReplaceWords\ReplaceWordsInCommandNewQueryWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.SettingsWindow" BaseTypeListCollapsed="true">
+    <Position X="18" Y="6.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\SettingsWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.ShowCellContentWindow" BaseTypeListCollapsed="true">
+    <Position X="11" Y="12.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\ShowCellContentWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.WakeupLoad" BaseTypeListCollapsed="true">
+    <Position X="18" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\WakeupLoad.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.View.Windows.Log.ShowHistoricLogWindow" BaseTypeListCollapsed="true">
+    <Position X="18.25" Y="13.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>View\Windows\Log\ShowHistoricLogWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.ViewModel.Compare_tabItemViewModel">
+    <Position X="56.75" Y="22.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>IEAK4YEyBABkAWVQBBhQSkBAwmCgIDCPjggAABDTN7A=</HashCode>
+      <FileName>ViewModel\Compare_tabItemViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.ViewModel.DataBaseConnectionTreeViewModel">
+    <Position X="60" Y="11" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AABQABAUAAWACABCCCDgAAAAAABgFAACgAJAAAQQAGA=</HashCode>
+      <FileName>ViewModel\DataBaseConnectionTreeViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.ViewModel.DataGridViewModel">
+    <Position X="64.25" Y="7" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAACAAAhQAEAEMAAAAgCAAwAIAAACAAAEAABAA=</HashCode>
+      <FileName>ViewModel\DataGridViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.ViewModel.MainTableViewModel">
+    <Position X="51.75" Y="6.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>DARLATHCtqRkEAIAlApr4EgSQCABHBIIDJWUbUIQkUE=</HashCode>
+      <FileName>ViewModel\MainTableViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.ViewModel.NewQueryTabItemViewModel" BaseTypeListCollapsed="true">
+    <Position X="60" Y="22.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>QOQTAyOGsBAsB2IIjggHoV+ZTCIQNHooCIAATEKCheE=</HashCode>
+      <FileName>ViewModel\NewQueryTabItemViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DataMergeEditor.ViewModel.NewScriptNoteViewModel">
+    <Position X="64.25" Y="12.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAIAAAAAQAAAAAAAICAAAAAMgAAACAAAAAA=</HashCode>
+      <FileName>ViewModel\NewScriptNoteViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.ViewModel.SettingsViewModel">
+    <Position X="67" Y="10.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAEwAAAIQAAAAAAAAAAQAgCAAAAIIAAAAAAgBAA=</HashCode>
+      <FileName>ViewModel\SettingsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.ViewModel.SidePanelViewModel">
+    <Position X="48" Y="6.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AEgQCBAAiAghkAAEARAAAIBAgCAgQAELiAABiBYgASA=</HashCode>
+      <FileName>ViewModel\SidePanelViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.ViewModel.TreeNodeViewModel">
+    <Position X="35.75" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\TreeViewModel\TreeNodeViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.ViewModel.ViewModelLocator">
+    <Position X="51.75" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAAAAABQAQgAAAAAAAAACBACAAAAAAEAgABABAAAAAA=</HashCode>
+      <FileName>ViewModel\ViewModelLocator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.ViewModel.Connections.mssql_connection_Window_ViewModel">
+    <Position X="60" Y="7" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAQAAAEAAAAAAAAiAAAAAIIAAAAACAA=</HashCode>
+      <FileName>ViewModel\Connections\mssql_connection_Window_ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.ViewModel.Connections.mysql_connection_Window_ViewModel">
+    <Position X="56.75" Y="7" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAhAAAIAAAAAAAEAAAAAAEAAAAAAAEg=</HashCode>
+      <FileName>ViewModel\Connections\mysql_connection_Window_ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.ViewModel.Connections.oracle_connection_Window_ViewModel">
+    <Position X="64.25" Y="16.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAEAAEAAAACCAAAgAICAAAAABAAABAg=</HashCode>
+      <FileName>ViewModel\Connections\oracle_connection_Window_ViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.ViewModel.Log.LogViewModel">
+    <Position X="67" Y="7" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAQABAAAEAACAAAAAAAAEAAAAAAAAEIACAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Log\LogViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.ViewModel.Relations.RelationsViewModel">
+    <Position X="60" Y="21" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\Relations\RelationsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataMergeEditor.ViewModel.TreeViewModel.ModdedTreeView">
+    <Position X="60" Y="18.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAgAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\TreeViewModel\ModdedTreeView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="DataMergeEditor.Interfaces.IDataConnection">
+    <Position X="15.25" Y="19.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>hAQAACAAABAAAAQAAAAIAAWAEAAAAAAgAQAAAIAAAgA=</HashCode>
+      <FileName>Interfaces\IDataConnection.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DataMergeEditor.DBConnect.Data.TreeData.IMssqlTree">
+    <Position X="20.25" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Interfaces\IMssqlTree.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DataMergeEditor.DBConnect.Data.TreeData.IMysqlTree">
+    <Position X="20.25" Y="21.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Interfaces\IMysqlTree.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DataMergeEditor.DBConnect.Data.TreeData.IOracleTree">
+    <Position X="20.25" Y="22.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAABAAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>Interfaces\IOracleTree.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DataMergeEditor.Services.IDataService">
+    <Position X="17.75" Y="19.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>QAAAAEEgkAAAQAAAAAAAAAAQAAAAAAAAAAAAACAABAA=</HashCode>
+      <FileName>Interfaces\IDataService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DataMergeEditor.Interfaces.STTableCT.ITableContent">
+    <Position X="17.75" Y="23" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAADAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Interfaces\STTableCT\ITableContent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="DataMergeEditor.DBConnect.Adapter.DBAdapterType">
+    <Position X="12.25" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAACAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>DBConnect\Adapter\DBAdapterType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

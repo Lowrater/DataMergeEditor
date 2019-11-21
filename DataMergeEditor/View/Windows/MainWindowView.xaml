@@ -1,0 +1,32 @@
+﻿<!--Line 4 is the ref to view Usercontrols. use "UserControls." to use any UserControl in the UserControls folder-->
+    <Window x:Class="DataMergeEditor.MainWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:userControls="clr-namespace:DataMergeEditor.View.UserControls"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataMergeEditor"
+        mc:Ignorable="d"
+        MinWidth="1000"
+        MinHeight="470"
+        Title="Data Merge Editor: Main window" Height="470" Width="1000"
+            WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="100" Width="250" MaxWidth="350"/>
+            <ColumnDefinition MinWidth="700" Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!--This is the DataGrid from DataGridVew.xaml-->
+        <userControls:MainTableView Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
+        </userControls:MainTableView>
+        <userControls:SidePanelVeiw Grid.Column="0"  >
+        </userControls:SidePanelVeiw>
+        <!-- grid splitter -->
+        <GridSplitter  VerticalAlignment="Stretch" HorizontalAlignment="right" 
+                       Grid.Column="0" Background="LightGray" Width="5"/>
+    </Grid>
+</Window>

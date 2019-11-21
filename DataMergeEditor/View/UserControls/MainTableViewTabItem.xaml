@@ -1,0 +1,303 @@
+﻿<UserControl x:Class="DataMergeEditor.View.UserControls.MainTableViewTabItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:ViewModel="clr-namespace:DataMergeEditor.ViewModel"
+             xmlns:userControls="clr-namespace:DataMergeEditor.View.UserControls"
+             mc:Ignorable="d" 
+             DataContext="{Binding Main,Source={StaticResource Locator}}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="150" MinHeight="100" MaxHeight="800"/>
+            <RowDefinition Height="15"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button  Height="20" Width="80" Margin="10,0" HorizontalAlignment="Center" Grid.Column="1" 
+                     Content="New column" Command="{Binding AddNewColumnCommand}">
+                <ToolTipService.ToolTip>
+                    <Border>
+                        <TextBlock Text="Provides a new window to add a new column to the main grid." />
+                    </Border>
+                </ToolTipService.ToolTip>
+            </Button>
+            <Grid Grid.Column="2"  Height="20" Margin="8,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="80"/>
+                </Grid.ColumnDefinitions>
+                <ComboBox x:Name="ComboStoryBox" ItemsSource="{Binding HistoryCommands}" Grid.Column="0" 
+                          SelectedItem="{Binding SelectedIndexOfComboBoxItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                    <ToolTipService.ToolTip>
+                        <Border>
+                            <TextBlock Text="Displays all commands done to the main table or exporting the grid sql wise." />
+                        </Border>
+                    </ToolTipService.ToolTip>
+                </ComboBox>
+                <TextBlock Text="Query history" IsHitTestVisible="False" TextAlignment="Center"></TextBlock>
+                <Button Content="Execute (F5)" Grid.Column="2" Command="{Binding RunQueryExectuerCommand}" >
+                    <ToolTipService.ToolTip>
+                        <Border>
+                            <TextBlock >
+                        Execute funktion by click or F5. 
+                        <LineBreak/> 
+                        F5 only works with inserts in the main table. 
+                        <LineBreak/>
+                        F5 is a default executer in the remaining windows with querys.
+                            </TextBlock>
+                        </Border>
+                    </ToolTipService.ToolTip>
+                </Button>
+            </Grid>
+        </Grid>
+        <!--Tabellen -->
+        <DataGrid  x:Name="MainDataGrid" Grid.Row="1" MaxHeight="1000" ItemsSource="{Binding DatatableMerger}" 
+                   HorizontalScrollBarVisibility="Visible" CurrentCell="{Binding TableCoumnIndexisSelected, Mode=OneWayToSource}" 
+                   SelectionMode="Extended" CanUserAddRows="True"  EnableRowVirtualization="True"
+                   EnableColumnVirtualization="True" VirtualizingStackPanel.VirtualizationMode="Recycling" CanUserSortColumns="True" >
+            <ToolTipService.ToolTip>
+                <Border>
+                    <TextBlock Text="This is the main grid, which is the primary workarea to manipulate fetched data from the sidepanel
+                               list." />
+                </Border>
+            </ToolTipService.ToolTip>
+            <!-- Sørge for at headers IKKE fjerne _ i header name som den gør pr. default-->
+            <!-- RecognizesAccessKey="False" er det som gør at _ ikke forsvinder-->
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" >
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="DataGridColumnHeader">
+                                <Grid Margin="{TemplateBinding Padding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <!-- Tillader underscore pga. reserveret første underscore-->
+                                    <ContentPresenter RecognizesAccessKey="False" Margin="3" 
+                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                                    <!-- Opdeleren pr. column header så man kan strække den.-->
+                                    <Thumb x:Name="PART_RightHeaderGripper"
+                                            Grid.Column="1"
+                                            HorizontalAlignment="Right"
+                                            Width="2" 
+                                            BorderThickness="1"                                           
+                                            BorderBrush="{Binding VerticalGridLinesBrush, RelativeSource={RelativeSource FindAncestor, 
+                                                                                                        AncestorType={x:Type DataGrid}}}"
+                                            Cursor="SizeWE"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="FontWeight" Value="Bold" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+            <!-- Key bindings -->
+            <DataGrid.InputBindings>
+                <KeyBinding Command="{Binding RunQueryExectuerCommand}" Key="F5" />
+                <KeyBinding Command="{Binding GetLastCommand}" Modifiers="Ctrl" Key="Up" />
+                <KeyBinding Command="{Binding ReplaceWordsForDatableCommand}" Modifiers="Ctrl" Key="R" />
+            </DataGrid.InputBindings>
+            <!-- Undermenu -->
+            <DataGrid.ContextMenu>
+                <ContextMenu >
+                    <MenuItem Header="Table actions" >
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Actions_icon.png"/>
+                        </MenuItem.Icon>
+                        <MenuItem Header="Add new column" Command="{Binding AddNewColumnCommand}">
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/add_column_icon.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Rename column" Command="{Binding RenameColumeHeaderCommand}">
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/rename_column_icon.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Delete column" Command="{Binding DeleteColumeHeaderCommand}">
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/delete_column_icon.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Clear column data" Command="{Binding clearSelectedColumnRowDataCommand}">
+                            <ToolTipService.ToolTip>
+                                <Border>
+                                    <TextBlock Text="Removes all data in the selected column." />
+                                </Border>
+                            </ToolTipService.ToolTip>
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/clear_column_data_icon.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Clear rows" Command="{Binding ClearTableCommand}">
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/Clear_grid_icon.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Reset table" Command="{Binding ResetdatatableCommand}">
+                            <ToolTipService.ToolTip>
+                                <Border>
+                                    <TextBlock Text="Resets the whole table. 'reset' command does the same." />
+                                </Border>
+                            </ToolTipService.ToolTip>
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/Clear_row_columns.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Add row ount" Command="{Binding AddCountCommand}">
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/add_count_icon.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Name="Replace" Header="Replace words for column row" Command="{Binding ReplaceWordsForColumnRowCommand}">
+                            <ToolTipService.ToolTip>
+                                <Border>
+                                    <TextBlock Text="Replaces all words for the selected column." />
+                                </Border>
+                            </ToolTipService.ToolTip>
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/compare_table_icon.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Replace words for table" Command="{Binding ReplaceWordsForDatableCommand}">
+                            <ToolTipService.ToolTip>
+                                <Border>
+                                    <TextBlock Text="Replaces all words for the whole table. CTRL + R does the same." />
+                                </Border>
+                            </ToolTipService.ToolTip>
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/compare_table_icon.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem  Header="Export maingrid">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/export_grid_icon.png"/>
+                        </MenuItem.Icon>
+                        <MenuItem Name="btnExportToCSV" Header="To CSV" Command="{Binding ExportToCSVCommand}">
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/export_to_csv_icon.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Name="btnExportToPDF" Header="To PDF" Command="{Binding ExportToPdfCommand}">
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/export_to_pdf_icon.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Name="btnExportToTXT" Header="To TXT" Command="{Binding ExportToTXTCommand}">
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/export_to_txt_icon.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Name="btnExportToXML" Header="To XML" Command="{Binding ExportToXMLCommand}">
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/export_to_xml_icon.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Name="btnExportToDB" Header="To external Database (SqlBulkCopy)"
+                                  Command="{Binding ExportCurrentTableToExternalDatabaseCommand}">
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/export_to_db_icon.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Color cells" IsEnabled="False">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/color_cells_icon.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Header="Show grid info" Command="{Binding DisplaytableInformationCommand}">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/Show_grid_info_icon.png"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <TextBox MinHeight="100" Name="MainQueryTextBox" Text="{Binding Path=QueryTXT, Mode=TwoWay, 
+                UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True">
+                <ToolTipService.ToolTip>
+                    <Border>
+                        <TextBlock Text="This query field to support above datagrid. It's specified for insert's 
+                                   to the columns and exporting the grid." />
+                    </Border>
+                </ToolTipService.ToolTip>
+                <TextBox.InputBindings>
+                    <KeyBinding Command="{Binding RunQueryExectuerCommand}" Key="F5" />
+                    <KeyBinding Command="{Binding GetLastKeyUpCommand}" Key="Up"  Modifiers="Ctrl"/>
+                    <KeyBinding Command="{Binding GetLastKeyDownCommand}" Key="Down" Modifiers="Ctrl" />
+                    <KeyBinding Command="{Binding CancelFetchedRowsCommand}" Key="Esc"/>
+                    <KeyBinding Command="{Binding ReplaceWordsForCommandFieldCommand}" Key="R" Modifiers="Ctrl"/>
+                    <KeyBinding Command="{Binding ShowHistoricLogCommand}" Key="H" Modifiers="Ctrl"/>
+                </TextBox.InputBindings>
+                <TextBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Clear" Command="{Binding ClearCommandFieldCommand}">
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/Clear_row_columns.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Replace words"  Command="{Binding ReplaceWordsForCommandFieldCommand}" >
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/rename_column_icon.png"/>
+                            </MenuItem.Icon>
+                            <ToolTipService.ToolTip>
+                                <Border>
+                                    <TextBlock Text="CTRL + R does the same." />
+                                </Border>
+                            </ToolTipService.ToolTip>
+                        </MenuItem>
+                        <MenuItem Header="Commands">
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/sql_scripts_icon.png"/>
+                            </MenuItem.Icon>
+                            <MenuItem Header="Create table command" Command="{Binding CreateTableCommand}">
+                                <MenuItem.Icon>
+                                    <Image Source="/Resources/create_table_command_icon.png"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Insert into column command" Command="{Binding CreateColumnInsertIntoCommand}">
+                                <MenuItem.Icon>
+                                    <Image Source="/Resources/insert_into_command_icon.png"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Insert column command" Command="{Binding CreateColumnInsertCommand}">
+                                <MenuItem.Icon>
+                                    <Image Source="/Resources/Create_insert_command_icon.png"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                        </MenuItem>
+                        <MenuItem Header="History log" Command="{Binding ShowHistoricLogCommand}" >
+                            <MenuItem.Icon>
+                                <Image Source="/Resources/Actions_icon.png"/>
+                            </MenuItem.Icon>
+                            <ToolTipService.ToolTip>
+                                <Border>
+                                    <TextBlock Text="CTRL + H does the same." />
+                                </Border>
+                            </ToolTipService.ToolTip>
+                        </MenuItem>
+                    </ContextMenu>
+                </TextBox.ContextMenu>
+            </TextBox>
+        </ScrollViewer>
+        <ProgressBar  Grid.Row="3" Height="15" Width="auto" Name="ActionProgressBaren" Minimum="0" Maximum="100" 
+                      Value="{Binding ProgressFill, Mode=TwoWay}" Foreground="{Binding PBarColorBrush}"/>
+        <TextBlock   Grid.Row="3" Height="15" Width="auto" Name="txtblockActionprogressbar" Text="{Binding txtchange, Mode=TwoWay}"
+                     FontSize="10" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+        <GridSplitter  VerticalAlignment="Top" HorizontalAlignment="Stretch"  Height="3"  Grid.Row="2" Background="LightGray" 
+                       Width="auto"/>
+    </Grid>
+</UserControl>

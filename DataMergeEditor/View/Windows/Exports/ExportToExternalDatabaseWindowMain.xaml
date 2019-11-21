@@ -1,0 +1,100 @@
+﻿<Window x:Class="DataMergeEditor.View.Windows.Exports.ExportToExternalDatabaseWindowMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataMergeEditor.View.Windows.Exports"
+        mc:Ignorable="d"
+      DataContext="{Binding Main,Source={StaticResource Locator}}"
+        Title="Data Merge Editor: Export table to external database" MaxWidth="800" 
+        MaxHeight="290" WindowStartupLocation="CenterScreen">
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="90" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Background="LightGray" Grid.Row="0" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0"  Text="Row 1 = Column header type" 
+                       VerticalAlignment="Center" Margin="10,0"></TextBlock>
+            <Grid Grid.Column="2" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" VerticalAlignment="Center" >Export type:</Label>
+                <CheckBox Grid.Column="1" VerticalAlignment="Center">To table</CheckBox>
+                <CheckBox Grid.Column="2" VerticalAlignment="Center">New table</CheckBox>
+            </Grid>
+        </Grid>
+        <DataGrid Grid.Row="1" Grid.ColumnSpan="3" ItemsSource="{Binding ExportLabelFields}">
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="{x:Type DataGridColumnHeader}" 
+                       BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" >
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="DataGridColumnHeader">
+                                <Grid Margin="{TemplateBinding Padding}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <!-- Tillader underscore pga. reserveret første underscore-->
+                                    <ContentPresenter RecognizesAccessKey="False" Margin="3" 
+                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                                    <!-- Opdeleren pr. column header så man kan strække den.-->
+                                    <Thumb x:Name="PART_RightHeaderGripper"
+                                            Grid.Column="1"
+                                            HorizontalAlignment="Right"
+                                            Width="2" 
+                                            BorderThickness="1"                                           
+                                            BorderBrush="{Binding VerticalGridLinesBrush, RelativeSource={RelativeSource FindAncestor,
+                                                                  AncestorType={x:Type DataGrid}}}"
+                                            Cursor="SizeWE"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="FontWeight" Value="Bold" />
+                </Style>
+            </DataGrid.ColumnHeaderStyle>
+        </DataGrid>
+        <!-- Export menuen -->
+        <Grid  Grid.Row="2" Grid.Column="3" Margin="10,0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label  >Choose database:</Label>
+            <ComboBox  Grid.Row="1"  ItemsSource="{Binding ConnectionList}" SelectedValue="{Binding SelectedMarkedText}"></ComboBox>
+            <Label   Grid.Row="2">Table (Name) to recieve the row data:</Label>
+            <TextBox  Grid.Row="3" Text="{Binding CreateTableEXP}">
+                <ToolTipService.ToolTip>
+                    <Border>
+                        <TextBlock Text="This table must exist. Else the export will fail, unless it's an internal export." />
+                    </Border>
+                </ToolTipService.ToolTip>
+            </TextBox>
+            <WrapPanel Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,15,0,0">
+                <Button IsCancel="True" Name="btnDialogCancel" MinWidth="60" Margin="0,0,10,0"
+                        Click="btnDialogCancel_Click">_Cancel</Button>
+                <Button IsDefault="True" Name="btnDialogOk" MinWidth="60"  Click="btnDialogOk_Click">_Export</Button>
+            </WrapPanel>
+        </Grid>
+    </Grid>
+</Window>

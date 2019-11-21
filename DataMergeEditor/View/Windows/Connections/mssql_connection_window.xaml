@@ -1,0 +1,48 @@
+﻿<Window x:Class="DataMergeEditor.View.Windows.Connections.mssql_connection_window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ViewModel="clr-namespace:DataMergeEditor.ViewModel.Connections"
+        mc:Ignorable="d"
+        DataContext="{Binding MsSql,Source={StaticResource Locator}}"
+        Title="Data Merge editor: MSSQL window" Height="403" Width="330" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="230"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Image Grid.Column="0" Source="/Resources/logo/mssql_icon.png"></Image>
+        <StackPanel Grid.Row="1" Grid.Column="0" Width="250" Name="MsSQL_panel" Margin="10.0">
+            <StackPanel Margin="10.0">
+                <TextBlock>DataSource:</TextBlock>
+                <TextBox Text="{Binding Path=MSDataSource, Mode=OneWayToSource}"></TextBox>
+                <TextBlock>Database:</TextBlock>
+                <TextBox Text="{Binding Path=MSInitialCatalog, Mode=OneWayToSource}"></TextBox>
+                <TextBlock>Persist Security Info(True/false):</TextBlock>
+                <TextBox Text="{Binding Path=MSPersistSecurityInfo, Mode=OneWayToSource}"></TextBox>
+                <TextBlock>User ID:</TextBlock>
+                <TextBox Text="{Binding Path=MSUserID, Mode=OneWayToSource}"></TextBox>
+                <TextBlock>Password:</TextBlock>
+                <PasswordBox x:Name="PwdBox"></PasswordBox>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Width="240">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1" Name="ConnectBtn" HorizontalAlignment="Center" Margin="0,10"
+                        Width="80" Height="20" Command="{Binding MsConnectBtnCommand}" 
+                        CommandParameter="{Binding ElementName=PwdBox}">Connect</Button>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>

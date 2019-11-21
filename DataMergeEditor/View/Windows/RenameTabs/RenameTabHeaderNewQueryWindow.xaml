@@ -1,0 +1,27 @@
+﻿<Window x:Class="DataMergeEditor.View.Windows.RenameTabHeaderNewQueryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataMergeEditor.View.Windows"
+        DataContext="{Binding NewQuery,Source={StaticResource Locator}}"
+        mc:Ignorable="d"
+   Title="Data Merge Editor: Rename column" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+    <Grid Margin="15" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Label Grid.Column="1">Enter the a new tab name:</Label>
+        <TextBox  Grid.Column="1" Grid.Row="1" MinWidth="250" Text="{Binding NewScriptNoteName, Mode=TwoWay}"></TextBox>
+        <WrapPanel Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,15,0,0">
+            <Button IsDefault="True" Name="btnDialogOk" MinWidth="60" Margin="0,0,10,0" Click="btnDialogOk_Click">_Ok</Button>
+            <Button IsCancel="True" Name="btnDialogCancel" MinWidth="60" Click="btnDialogCancel_Click">_Cancel</Button>
+        </WrapPanel>
+    </Grid>
+</Window>

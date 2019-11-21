@@ -1,0 +1,704 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F7799C50-0C9F-42B1-A51A-0A00AD7BD183}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DataMergeEditor</RootNamespace>
+    <AssemblyName>DataMergeEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\Martin Stach Tomas\Desktop\DME\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <SupportUrl>http://datamergeeditor.dk</SupportUrl>
+    <ErrorReportUrl>http://datamergeeditor.dk</ErrorReportUrl>
+    <TargetCulture>en</TargetCulture>
+    <ProductName>DataMergeEditor</ProductName>
+    <PublisherName>DME</PublisherName>
+    <SuiteName>Martin Tomas Stach</SuiteName>
+    <ApplicationRevision>45</ApplicationRevision>
+    <ApplicationVersion>11.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\dme_program_logo_eSF_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>CA546416AE8458D52CE40DEF90FAD33FB6EE3F23</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>DataMergeEditor_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.5\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServiceLocator, Version=2.0.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.4\lib\net46\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.9.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.9.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.17.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.17\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Compression.Base, Version=17.2460.0.51, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Compression.Base.17.2.0.51\lib\net46\Syncfusion.Compression.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=17.2460.0.51, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Licensing.17.2.0.51\lib\net46\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Base, Version=17.2460.0.51, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Pdf.Wpf.17.2.0.51\lib\net46\Syncfusion.Pdf.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="DBConnect\Adapter\DBAdapterType.cs" />
+    <Compile Include="DBConnect\Data\ListData\ContentList.cs" />
+    <Compile Include="DBConnect\Data\MssqlDataConnection.cs" />
+    <Compile Include="DBConnect\Data\MySqlDataConnection.cs" />
+    <Compile Include="DBConnect\Data\OracleDataConnection.cs" />
+    <Compile Include="Interfaces\IMssqlTree.cs" />
+    <Compile Include="DBConnect\Data\TreeData\MssqlTree.cs" />
+    <Compile Include="Interfaces\IMysqlTree.cs" />
+    <Compile Include="Interfaces\IOracleTree.cs" />
+    <Compile Include="DBConnect\Data\TreeData\MysqlTree.cs" />
+    <Compile Include="DBConnect\Data\TreeData\OracleTree.cs" />
+    <Compile Include="DBConnect\Data\DataConnection.cs" />
+    <Compile Include="Interfaces\IDataConnection.cs" />
+    <Compile Include="Interfaces\STTableCT\ITableContent.cs" />
+    <Compile Include="Messages\ConnectionMessages.cs" />
+    <Compile Include="Model\Addons\TreeAddons.cs" />
+    <Compile Include="Model\Connections\mysql_connectionModel.cs" />
+    <Compile Include="Model\Connections\Odbc\odbc_addons.cs" />
+    <Compile Include="Model\Connections\oracle_connectionModel.cs" />
+    <Compile Include="Model\Addons\DbBlobFile.cs" />
+    <Compile Include="Model\Addons\ExportGrid.cs" />
+    <Compile Include="Model\Addons\CommandsModel.cs" />
+    <Compile Include="Model\Compare_tabItemModel.cs" />
+    <Compile Include="Model\Connections\mssql_connectionModel.cs" />
+    <Compile Include="Model\DatabaseConnectionModel.cs" />
+    <Compile Include="Model\DataGridModel.cs" />
+    <Compile Include="Model\MainTableModel.cs" />
+    <Compile Include="Model\GetTablesFromDBModel.cs" />
+    <Compile Include="Model\NewQueryModel.cs" />
+    <Compile Include="Model\NewTabItemModel.cs" />
+    <Compile Include="Model\SettingsWindowModel.cs" />
+    <Compile Include="Model\SidePanelListModel.cs" />
+    <Compile Include="Model\Addons\TableAddons.cs" />
+    <Compile Include="Services\DataService.cs" />
+    <Compile Include="Interfaces\IDataService.cs" />
+    <Compile Include="Model\Addons\TabelSearchHelper\DataGridTextSearch.cs" />
+    <Compile Include="Model\Addons\TabelSearchHelper\SearchValueConverter.cs" />
+    <Compile Include="Model\Addons\TableSyncHelper\ScrollSynchronizer.cs" />
+    <Compile Include="Model\Addons\TextBoxHelper\TextBoxHelper.cs" />
+    <Compile Include="ViewModel\Compare_tabItemViewModel.cs" />
+    <Compile Include="ViewModel\Connections\mysql_connection_Window_ViewModel.cs" />
+    <Compile Include="ViewModel\Connections\mssql_connection_Window_ViewModel.cs" />
+    <Compile Include="ViewModel\Connections\oracle_connection_Window_ViewModel.cs" />
+    <Compile Include="ViewModel\DataBaseConnectionTreeViewModel.cs" />
+    <Compile Include="ViewModel\DataGridViewModel.cs" />
+    <Compile Include="ViewModel\Log\LogViewModel.cs" />
+    <Compile Include="ViewModel\MainTableViewModel.cs" />
+    <Compile Include="ViewModel\NewQueryTabItemViewModel.cs" />
+    <Compile Include="ViewModel\NewScriptNoteViewModel.cs" />
+    <Compile Include="ViewModel\Relations\RelationsViewModel.cs" />
+    <Compile Include="ViewModel\SettingsViewModel.cs" />
+    <Compile Include="ViewModel\SidePanelViewModel.cs" />
+    <Compile Include="ViewModel\TreeViewModel\ModdedTreeView.cs" />
+    <Compile Include="ViewModel\TreeViewModel\TreeNodeViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\UserControls\Compare_tabItem.xaml.cs">
+      <DependentUpon>Compare_tabItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\DatabaseConnectionView.xaml.cs">
+      <DependentUpon>DatabaseConnectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\MainTableView.xaml.cs">
+      <DependentUpon>MainTableView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\MainRelationsTabItem.xaml.cs">
+      <DependentUpon>MainRelationsTabItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\MainTableViewTabItem.xaml.cs">
+      <DependentUpon>MainTableViewTabItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\NewQueryTabItem.xaml.cs">
+      <DependentUpon>NewQueryTabItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\NewScriptNoteView.xaml.cs">
+      <DependentUpon>NewScriptNoteView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserControls\SidePanelVeiw.xaml.cs">
+      <DependentUpon>SidePanelVeiw.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Connections\mssql_connection_window.xaml.cs">
+      <DependentUpon>mssql_connection_window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Connections\MySQL_panel_connection_window.xaml.cs">
+      <DependentUpon>MySQL_panel_connection_window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Connections\oracle_connection_window.xaml.cs">
+      <DependentUpon>oracle_connection_window.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Exports\ExportToExternalDatabaseWindowMain.xaml.cs">
+      <DependentUpon>ExportToExternalDatabaseWindowMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Exports\ExportToExternalDatabaseWindowNewQuery.xaml.cs">
+      <DependentUpon>ExportToExternalDatabaseWindowNewQuery.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\FindWordWindow.xaml.cs">
+      <DependentUpon>FindWordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\GetTablesFromDBWindow.xaml.cs">
+      <DependentUpon>GetTablesFromDBWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\HelpWindow.xaml.cs">
+      <DependentUpon>HelpWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Log\ShowHistoricLogWindow.xaml.cs">
+      <DependentUpon>ShowHistoricLogWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\NewColumnWindow.xaml.cs">
+      <DependentUpon>NewColumnWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\RenameColumHeaderWindow.xaml.cs">
+      <DependentUpon>RenameColumHeaderWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\RenameTabs\RenameTabHeaderMainDataGridWindow.xaml.cs">
+      <DependentUpon>RenameTabHeaderMainDataGridWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\RenameTabs\RenameTabHeaderNewQueryWindow.xaml.cs">
+      <DependentUpon>RenameTabHeaderNewQueryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\ReplaceWords\ReplaceWordsInColumnMainWindow.xaml.cs">
+      <DependentUpon>ReplaceWordsInColumnMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\ReplaceWords\ReplaceWordsInCommandMainWindow.xaml.cs">
+      <DependentUpon>ReplaceWordsInCommandMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\ReplaceWords\ReplaceWordsInCommandNewQueryWindow.xaml.cs">
+      <DependentUpon>ReplaceWordsInCommandNewQueryWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\SettingsWindow.xaml.cs">
+      <DependentUpon>SettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\ShowCellContentWindow.xaml.cs">
+      <DependentUpon>ShowCellContentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\WakeupLoad.xaml.cs">
+      <DependentUpon>WakeupLoad.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\UserControls\Compare_tabItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\DatabaseConnectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\MainRelationsTabItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\MainTableViewTabItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\MainWindowView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\Windows\MainWindowView.xaml.cs">
+      <DependentUpon>MainWindowView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="View\UserControls\MainTableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\NewQueryTabItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\NewScriptNoteView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserControls\SidePanelVeiw.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Connections\mssql_connection_window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Connections\MySQL_panel_connection_window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Connections\oracle_connection_window.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Exports\ExportToExternalDatabaseWindowMain.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\Exports\ExportToExternalDatabaseWindowNewQuery.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\FindWordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\GetTablesFromDBWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\HelpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Log\ShowHistoricLogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\NewColumnWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\RenameColumHeaderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\RenameTabs\RenameTabHeaderMainDataGridWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\RenameTabs\RenameTabHeaderNewQueryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\ReplaceWords\ReplaceWordsInColumnMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\ReplaceWords\ReplaceWordsInCommandMainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Windows\ReplaceWords\ReplaceWordsInCommandNewQueryWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\ShowCellContentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\WakeupLoad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="DataMergeEditor_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Resources\HelpGuide\Guide.pdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\settings.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="dme_program_logo_Hkc_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="dme_program_logo_eSF_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\dme_program_logo_eSF_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\DME_Logo.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\add_column_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Clear_grid_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Show_grid_info_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\delete_column_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\rename_column_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\clear_column_data_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\add_count_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\export_to_csv_icon.png" />
+    <Resource Include="Resources\export_to_db_icon.png" />
+    <Resource Include="Resources\export_to_pdf_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\help_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\color_cells_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\mysql_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\mssql_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\oracle_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\sqllite_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\PostgreSQL_logo.ong.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ms_access_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Clear_row_columns.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Add_tab_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Remove_tab_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Keyboard_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Coding_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Help_icon_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Filter_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Export_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Create_insert_command_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\sql_commands_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\create_table_command_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\alter_table_command_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\drop_table_command_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Backup_database_command_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\create_database_command_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\create_table_view_command.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\create_index_command_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\create_case_command_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\update_table_command_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\create_select_command_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\export_to_txt_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\compare_icon_command.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\compare_table_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\export_grid_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\relations_example_picture.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\active_database_tree_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Refresh_three.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\disconnect_icon_treeView.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\OK_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\insert_into_command_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\sql_scripts_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\export_to_xml_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\relations_tab_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Move_to_maingrid_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\search_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Open_cell_value_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Actions_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Remove_from_list_icon.png" />
+    <Resource Include="Resources\re_connect_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\save_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Compare_by_filter_correct_match_icon.png" />
+    <Resource Include="Resources\Compare_by_filter_mismatch_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Compare_by_filter_default_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\compare_quick_check_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\inactive_database_tree_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Gifs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\type_icon_side_panel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\box_icon_side_panel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Logo\Oracle_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Logo\MySQL_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Logo\mssql_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\execute_script_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\sap_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\cassandra_db_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\splunk_logo_db_icon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\mariadb_db_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\teradata_db_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Solr_db_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\HBase_db_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Microsoft_Azure_db_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\aws_dynabo_db_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\set_main_connection_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\marked_text_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\old_query_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\TableOptions_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\L_letter_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\R_letter_icon.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
