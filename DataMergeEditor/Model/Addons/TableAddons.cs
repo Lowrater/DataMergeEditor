@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Data;
 using System.IO;
 using System.Linq;
@@ -608,6 +609,54 @@ namespace DataMergeEditor.Model
                 NextRow:;
             }
             return MatchedTable;
+        }
+
+        /// <summary>
+        ///  Returnere en tabel ud fra en valgt fil.
+        /// </summary>
+        public static DataTable FetchTableByFile(string delimetertxt)
+        {
+            var table = new DataTable();
+
+            OpenFileDialog file = new OpenFileDialog
+            {
+                Multiselect = false,
+                Filter = "Text and CSV Files(*.txt, *.csv)|" +
+                "*.txt;*.csv|Text Files(*.txt)|" +
+                "*.txt|CSV Files(*.csv)|*.csv|" +
+                "All Files(*.*)|*.*"
+            };
+
+            if (file.ShowDialog() == true)
+            {
+                //-- Hvis det er en fil og findes
+                if (File.Exists(file.FileName) && !file.FileName.Contains(".xml"))
+                {
+                    try
+                    {
+                        //-- tildeler tabellen til venstre tabel
+                        table = setTable(file.FileName, delimetertxt);
+                        //table.TableName = file.FileName;
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Some files are broken or moved from fetched location. Please verify files.",
+                            "DataMergeEditor - Merging message",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Information);
+                    }
+                }
+
+                //-- Hvis det er xml, converter det til en tabel.
+                if (file.FileName.Contains(".xml"))
+                {
+                    //-- tildeler tabellen til venstre tabel
+                    table = setXmlTable(file.FileName);
+                }
+            }
+
+            //-- returnere tabellen
+            return table;
         }
     }
 }

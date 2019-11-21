@@ -265,60 +265,27 @@ namespace DataMergeEditor.ViewModel
         /// </summary>
         public void AddLeftFile()
         {
-            OpenFileDialog file = new OpenFileDialog
+            //-- tildeler tabellen til venstre tabel
+            leftDataTable = TableAddons.FetchTableByFile(leftdelimitertxt);
+            
+            //-- Opdatere tællre for rows
+            if (xLeftRowsCount != leftDataTable.Rows.Count)
             {
-                Multiselect = false,
-                Filter = "Text and CSV Files(*.txt, *.csv)|" +
-                "*.txt;*.csv|Text Files(*.txt)|" +
-                "*.txt|CSV Files(*.csv)|*.csv|" +
-                "All Files(*.*)|*.*"
-            };
-
-            if (file.ShowDialog() == true)
-            {
-                TableAddons.writeLogFile($"{file.FileName} has been used in for " +
-                    $"comparing data in compare windows", dataservice.LogLocation);
-
-                //-- Hvis det er en fil og findes
-                if (File.Exists(file.FileName) && !file.FileName.Contains(".xml"))
-                {
-                    try
-                    {
-                        //-- tildeler tabellen til venstre tabel
-                        leftDataTable = TableAddons.setTable(file.FileName, leftdelimitertxt);
-                    
-                        //-- Opdatere tællre for rows
-                        if (xLeftRowsCount != TableAddons.setTable(file.FileName, leftdelimitertxt).Rows.Count)
-                        {
-                            xLeftRowsCount = TableAddons.setTable(file.FileName, leftdelimitertxt).Rows.Count;
-                        }
-
-                        //-- opdatere tællre for columns
-                        if (xLeftColumnsCount != TableAddons.setTable(file.FileName, leftdelimitertxt).Columns.Count)
-                        {
-                            xLeftColumnsCount = TableAddons.setTable(file.FileName, leftdelimitertxt).Columns.Count;
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Some files are broken or moved from fetched location. Please verify files.",
-                            "DataMergeEditor - Merging message",
-                            MessageBoxButton.OK,
-                            MessageBoxImage.Information);
-                    }
-                }
-
-                //-- Hvis det er xml, converter det til en tabel.
-                if (file.FileName.Contains(".xml"))
-                {
-                    //-- tildeler tabellen til venstre tabel
-                    leftDataTable = TableAddons.setXmlTable(file.FileName);
-                }
+                xLeftRowsCount = leftDataTable.Rows.Count;
             }
+
+            //-- opdatere tællre for columns
+            if (xLeftColumnsCount != leftDataTable.Columns.Count)
+            {
+                xLeftColumnsCount = leftDataTable.Columns.Count;
+            } 
         }
 
 
-        //-- Sætter textboxen til det valgte item i listen
+
+        /// <summary>
+        /// Sætter textboxen til det valgte item i listen
+        /// </summary>
         public void setTextBoxFromSelectedListLeft()
         {
             if (SelectedIndexOfComboBoxItemLeft != null && SelectedIndexOfComboBoxItemLeft != "")
@@ -328,7 +295,9 @@ namespace DataMergeEditor.ViewModel
         }
 
 
-        //-- Vælger det valgte fra comboboxen
+        /// <summary>
+        /// Vælger det valgte fra comboboxen
+        /// </summary>
         public string SelectedIndexOfComboBoxItemLeft
         {
             get => compare_TabItemModel._selectedIndexOfComboBoxItemLeft;
@@ -340,12 +309,13 @@ namespace DataMergeEditor.ViewModel
             }
         }
 
-        //-- For kolonner (columns) oversigt
+        /// <summary>
+        /// For kolonner (columns) oversigt
+        /// </summary>        
         public int xLeftColumnsCount
         {
             get => compare_TabItemModel._xLeftColumnsCount;
             set => Set(ref compare_TabItemModel._xLeftColumnsCount, value);
-
         }
 
         //-- for rækker (rows) oversigt
@@ -366,7 +336,6 @@ namespace DataMergeEditor.ViewModel
         {
             get => compare_TabItemModel._tableColumnIndexisSelected;
             set => Set(ref compare_TabItemModel._tableColumnIndexisSelected, value);
-
         }
 
         //-------------------------------------------------- RIGHT GRID ----------------------------------------
@@ -515,60 +484,27 @@ namespace DataMergeEditor.ViewModel
             }
         }
 
+
         /// <summary>
         /// add file knap right
         /// </summary>
         public void AddRightFile()
         {
-            OpenFileDialog file = new OpenFileDialog
+            //-- tildeler tabellen til venstre tabel
+            righttDataTable = TableAddons.FetchTableByFile(rightdelimitertxt);
+
+            //-- Opdatere tællre for rows
+            if (xRightRowsCount != righttDataTable.Rows.Count)
             {
-                Multiselect = false,
-                Filter = "Text and CSV Files(*.txt, *.csv)|" +
-                "*.txt;*.csv|Text Files(*.txt)|" +
-                "*.txt|CSV Files(*.csv)|*.csv|All Files(*.*)|*.*"
-            };
+                xRightRowsCount = righttDataTable.Rows.Count;
+            }
 
-            if (file.ShowDialog() == true)
+            //-- opdatere tællre for columns
+            if (xRightColumnsCount != righttDataTable.Columns.Count)
             {
-                TableAddons.writeLogFile($"{file.FileName} has been used in for comparing data in compare windows",
-                    dataservice.LogLocation);
-
-                if (File.Exists(file.FileName) && !file.FileName.Contains(".xml"))
-                {
-                    //-- Hvis det er en fil og findes
-                    try
-                    {
-                        righttDataTable = TableAddons.setTable(file.FileName, rightdelimitertxt);
-
-                        //-- Opdatere tællre for rows
-                        if (xRightRowsCount != TableAddons.setTable(file.FileName, rightdelimitertxt).Rows.Count)
-                        {
-                            xRightRowsCount = TableAddons.setTable(file.FileName, rightdelimitertxt).Rows.Count;
-                        }
-
-                        //-- opdatere tællre for columns
-                        if (xRightColumnsCount != TableAddons.setTable(file.FileName, rightdelimitertxt).Columns.Count)
-                        {
-                            xRightColumnsCount = TableAddons.setTable(file.FileName, rightdelimitertxt).Columns.Count;
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Some files are broken or moved from fetched location. Please verify files.",
-                            "DataMergeEditor - Merging message",
-                            MessageBoxButton.OK,
-                            MessageBoxImage.Information);
-                    }
-                }
-                  
-                if (file.FileName.Contains(".xml"))
-                {
-                    //-- Hvis det er xml, converter det til en tabel.
-                    righttDataTable = TableAddons.setXmlTable(file.FileName);
-                }
+                xRightColumnsCount = righttDataTable.Columns.Count;
             }
         }
-
 
         /// <summary>
         /// For kolonner (columns) oversigt
