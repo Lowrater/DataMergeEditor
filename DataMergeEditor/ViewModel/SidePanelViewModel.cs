@@ -335,9 +335,6 @@ namespace DataMergeEditor.ViewModel
                     if (!MainListContainer.Contains(content))
                     {
                         MainListContainer.Add(content);
-                        //-- Sender godkendelse til at der er lavet ændringer i listen, 
-                        //-- så MainTableViewModel kan opdatere hovedtabellen dynamisk
-                        Messenger.Default.Send<bool, MainTableViewModel>(true);
                     }
                     else
                     {
@@ -347,6 +344,9 @@ namespace DataMergeEditor.ViewModel
                                         MessageBoxImage.Information);
                     }
                 }
+                //-- Sender godkendelse til at der er lavet ændringer i listen, 
+                //-- så MainTableViewModel kan opdatere hovedtabellen dynamisk
+                Messenger.Default.Send<bool, MainTableViewModel>(true);
                 //-- åbner muligheden at fjerne en fil igen.
                 RemoveIsEnabledBool = true;
             }
