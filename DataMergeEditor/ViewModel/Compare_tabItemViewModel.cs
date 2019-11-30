@@ -99,6 +99,8 @@ namespace DataMergeEditor.ViewModel
             }
         }
 
+
+
         /// <summary>
         /// Viser kun rækker hvor data er korrekt i begge tabeller
         /// </summary>
@@ -138,6 +140,12 @@ namespace DataMergeEditor.ViewModel
         public ICommand ClearCommandFieldCommandLeft => new RelayCommand(ClearCommandFieldLeft);
         public ICommand getQueryKeyUpLeftCommand => new RelayCommand(getQueryKeyUpLeft);
         public ICommand getQueryKeyDownLeftCommand => new RelayCommand(getQueryKeyDownLeft);
+
+        /// <summary>
+        /// Connection liste fra sidepanelet, som bruges til exportering til extern database
+        /// </summary>
+        public ObservableCollection<string> ConnectionListLeft => dataservice.ConnectionListNames;
+
 
         public DataTable DummyTableLeft
         {
@@ -353,6 +361,12 @@ namespace DataMergeEditor.ViewModel
             get => compare_TabItemModel._dummyTableRight;
             set => Set(ref compare_TabItemModel._dummyTableRight, value);
         }
+
+        /// <summary>
+        /// Connection liste fra sidepanelet, som bruges til exportering til extern database
+        /// </summary>
+        public ObservableCollection<string> ConnectionListRight => dataservice.ConnectionListNames;
+
 
         /// <summary>
         /// Resetter Command feltet LEFT

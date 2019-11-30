@@ -352,13 +352,9 @@ namespace DataMergeEditor.ViewModel
 
         /// <summary>
         /// Connection liste af de gyldige forbindelser i sidepanelets tre liste.
-        /// Bruges til exportering af tabeller osv.
+        /// Bruges til exportering af tabeller, skifte forbindelse til combobox nederst højre side.
         /// </summary>
-        public ObservableCollection<string> ConnectionList
-        {
-            get => _MainTableModel._connectionList;
-            set => Set(ref _MainTableModel._connectionList, value);
-        }
+        public ObservableCollection<string> ConnectionList => dataservice.ConnectionListNames;
 
         /// <summary>
         /// Til den valgte database som går til ExportTableToExternalDatabase
@@ -379,7 +375,9 @@ namespace DataMergeEditor.ViewModel
             set => Set(ref _MainTableModel._createTableEXP, value);
         }
 
-        // ---------------------- Export af tabel, til pre-view via.  ExportToExternalDatabaseWindowMain
+        /// <summary>
+        ///   Export af tabel, til pre-view via.  ExportToExternalDatabaseWindowMain
+        /// </summary>
         public DataTable ExportLabelFields
         {
             get => _MainTableModel._exportLabelFields;
@@ -404,15 +402,6 @@ namespace DataMergeEditor.ViewModel
 
             //-- Det nye popup vindue
             var exp = new ExportToExternalDatabaseWindowMain();
-
-            //-- viser alle database navnene i en liste til valg.
-            foreach (var item in dataservice.ConnectionList.Keys)
-            {
-                if(!ConnectionList.Contains(item))
-                {
-                    ConnectionList.Add(item);
-                }
-            }
 
             //-- Når brugeren har sagt OK, export griddet til en ny database
             //-- SelectedMarkedText = databasenavn

@@ -128,15 +128,8 @@ namespace DataMergeEditor.ViewModel
         /// <summary>
         /// Har alle database navne i denne liste, som bindes til drop down menuen på GetTableFromDBWindow
         /// </summary>
-        public ObservableCollection<string> ConnectionList
-        {
-            get => SidePanelListModel._connectionList;
-            set
-            {
-                Set(ref SidePanelListModel._connectionList, value);
-                //-- havde en messenger sendt af listen til Maintable før? Ukendt rettelse..
-            }         
-        }
+        public ObservableCollection<string> ConnectionList => dataservice.ConnectionListNames;
+
 
         /// <summary>
         /// Resetter textboxene
@@ -300,17 +293,10 @@ namespace DataMergeEditor.ViewModel
 
         /// <summary>
         /// starter GettableFromDBWindow 
-        /// Henter alle database navne til dropdownen
         /// </summary>
         public void ShowGetTablesFromDBWindow()
         {
-            foreach (var item in dataservice.ConnectionList.Keys)
-            {
-                if(!ConnectionList.Contains(item))
-                {
-                    ConnectionList.Add(item);
-                }
-            }
+
             GetTablesFromDBWindow GetTablesFromDBWindow = new GetTablesFromDBWindow();
             GetTablesFromDBWindow.Show();
         }
@@ -330,7 +316,8 @@ namespace DataMergeEditor.ViewModel
             {
                 foreach (var File in file.FileNames)
                 {
-                    TableAddons.writeLogFile($"{file.FileName} has been added to the sidepanel", dataservice.LogLocation);
+                    TableAddons.writeLogFile($"{file.FileName} has been added to the sidepanel",
+                        dataservice.LogLocation);
                     var content = new ContentList { DatabaseName = "FILE", Type = File };
                     if (!MainListContainer.Contains(content))
                     {

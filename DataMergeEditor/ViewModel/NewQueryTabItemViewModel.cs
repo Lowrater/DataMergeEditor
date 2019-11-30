@@ -111,7 +111,11 @@ namespace DataMergeEditor.ViewModel
         public string CurrentDBName
         {
             get => _newQueryModel._currentDBName;
-            set => Set(ref _newQueryModel._currentDBName, value);
+            set
+            {
+                Set(ref _newQueryModel._currentDBName, value);
+
+            }
         }
 
         /// <summary>
@@ -124,13 +128,10 @@ namespace DataMergeEditor.ViewModel
 
 
         /// <summary>
-        /// Connection liste fra sidepanelet
+        /// Connection liste fra sidepanelet, som bruges til exportering til extern database
         /// </summary>
-        public ObservableCollection<string> ConnectionList
-        {
-            get => _newQueryModel._connectionList;
-            set => Set(ref _newQueryModel._connectionList, value);
-        }
+        public ObservableCollection<string> ConnectionList => dataservice.ConnectionListNames;
+
 
         /// <summary>
         /// Binder det nye navn til oprettelsen af tabellen
@@ -181,9 +182,10 @@ namespace DataMergeEditor.ViewModel
             }
         }
 
-
-        // ---------------------- Test af export
-     
+        
+        /// <summary>
+        /// Tabel for exportering af tabel - test
+        /// </summary>
         public  DataTable ExportLabelFields
         {
             get => _newQueryModel._exportLabelFields;
@@ -212,14 +214,7 @@ namespace DataMergeEditor.ViewModel
             }      
             //-- Det nye popup vindue
             var exp = new ExportToExternalDatabaseWindowNewQuery();
-            //-- viser alle database navnene i en liste til valg.
-            foreach (var item in dataservice.ConnectionList.Keys)
-            {
-                if(!ConnectionList.Contains(item))
-                {
-                    ConnectionList.Add(item);
-                }
-            }
+
             //-- Når brugeren har sagt OK, export griddet til en ny database
             //-- SelectedMarkedText = databasenavn
             exp.DataContext = this;

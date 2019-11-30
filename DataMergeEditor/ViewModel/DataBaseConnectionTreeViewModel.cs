@@ -59,6 +59,7 @@ namespace DataMergeEditor.ViewModel
                         var MysqlCon = new MySqlConnection(message.ConnectionString);
                         MysqlCon.Open();
                         dataService.ConnectionList.Add(message.Databasename, new MySqlDataConnection(MysqlCon));
+                        dataService.ConnectionListNames.Add(message.Databasename);
                         Items.Add(dataService.mysqlTree.BuildTree(MysqlCon));
                         message.Execute(true);
                         TableAddons.writeLogFile($"{message.Databasename} type of MySql, has been added to" +
@@ -71,6 +72,7 @@ namespace DataMergeEditor.ViewModel
                         var OracleCon = new OdbcConnection(message.ConnectionString);
                         OracleCon.Open();
                         dataService.ConnectionList.Add(message.Databasename, new OracleDataConnection(OracleCon));
+                        dataService.ConnectionListNames.Add(message.Databasename);
                         Items.Add(dataService.oracleTree.BuildTree(OracleCon));
                         message.Execute(true);
                         TableAddons.writeLogFile($"{message.Databasename} type of Oracle, has been added to" +
@@ -83,6 +85,7 @@ namespace DataMergeEditor.ViewModel
                         var MssCon = new SqlConnection(message.ConnectionString);
                         MssCon.Open();
                         dataService.ConnectionList.Add(message.Databasename, new MssqlDataConnection(MssCon));
+                        dataService.ConnectionListNames.Add(message.Databasename);
                         Items.Add(dataService.mssqlTree.BuildTree(MssCon));
                         message.Execute(true);
                         TableAddons.writeLogFile($"{message.Databasename} type of MsSql, has been added to" +
@@ -235,6 +238,8 @@ namespace DataMergeEditor.ViewModel
                     Items.Remove(ChoosenMenuitem);
                     //-- Fjerner fra HovedListen alle klasser kan se
                     dataService.ConnectionList.Remove(DatabaseName);
+                    //-- Fjerner fra HovedListe af navne alle klasser kan se
+                    dataService.ConnectionListNames.Remove(DatabaseName);
                     //-- Setter listen på ny (i tilfælde den ikke opdatere automatisk, på et tidspunkt)
                     ItemsFilter = Items;
                     MessageBox.Show($"The connection to {DatabaseName} as successfully removed",

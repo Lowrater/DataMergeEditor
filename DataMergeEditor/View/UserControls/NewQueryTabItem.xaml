@@ -452,10 +452,22 @@
             <GridSplitter  VerticalAlignment="Stretch" HorizontalAlignment="right"  Grid.Column="0" Grid.RowSpan="2"
                            Background="LightGray" Width="5"/>
         </Grid>
-        <ProgressBar Grid.Row="3" Height="15" Width="auto" Name="ActionProgressBaren" Minimum="0" 
+        
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <ProgressBar Grid.Column="0" Height="15" Width="auto" Name="ActionProgressBaren" Minimum="0" 
                      Maximum="{Binding FetchRowCount}" Value="{Binding Progress}" Foreground="{Binding PBarColorBrush}"/>
-        <TextBlock Grid.Row="3"  Name="txtblockActionprogressbar" Text="{Binding txtchange, Mode=TwoWay}" FontSize="10" 
+            <TextBlock Grid.Column="0"  Name="txtblockActionprogressbar" Text="{Binding txtchange, Mode=TwoWay}" FontSize="10" 
                    Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+            
+            <!-- Drop down liste for at skifte forbindelser -->
+            <ComboBox Grid.Column="1" ItemsSource="{Binding ConnectionList}" SelectedValue="{Binding CurrentDBName, Mode=TwoWay}"  VerticalAlignment="Center"></ComboBox>
+        </Grid>
+
         <GridSplitter  VerticalAlignment="Top" HorizontalAlignment="Stretch"  Height="3"  Grid.Row="2" Background="LightGray" 
                        Width="auto"/>
     </Grid>

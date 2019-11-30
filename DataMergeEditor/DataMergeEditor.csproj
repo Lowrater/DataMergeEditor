@@ -31,7 +31,7 @@
     <ProductName>DataMergeEditor</ProductName>
     <PublisherName>DME</PublisherName>
     <SuiteName>Martin Tomas Stach</SuiteName>
-    <ApplicationRevision>46</ApplicationRevision>
+    <ApplicationRevision>48</ApplicationRevision>
     <ApplicationVersion>11.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>

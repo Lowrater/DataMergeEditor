@@ -1,6 +1,7 @@
 ﻿using DataMergeEditor.DBConnect.Data.TreeData;
 using DataMergeEditor.Interfaces;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace DataMergeEditor.Services
 {
@@ -14,6 +15,7 @@ namespace DataMergeEditor.Services
     public interface IDataService
     {
         Dictionary<string, IDataConnection> ConnectionList { get; set; }
+        ObservableCollection<string> ConnectionListNames { get; set; } 
         string LogLocation { get; set; }
          bool AskOnInsert { get; set; }
          bool AskOnDrop { get; set; }

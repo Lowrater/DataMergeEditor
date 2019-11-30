@@ -15,7 +15,7 @@
             <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="140"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="15"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -416,11 +416,29 @@
         <!-- grid splitter -->
         <GridSplitter  VerticalAlignment="Top" HorizontalAlignment="Stretch"  Height="3"  Grid.Row="3" Grid.ColumnSpan="3" 
                        Background="LightGray" Width="auto"/>
-        <!-- midt progress bar-->
-        <ProgressBar Grid.Row="4" Grid.ColumnSpan="3" Height="15" Width="auto" Name="ActionProgressBaren" Minimum="0" 
+
+        <Grid Grid.Row="4" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <!-- Venstre dropdown menu -->
+            <!-- Drop down liste for at skifte forbindelser -->
+            <ComboBox Grid.Column="0" ItemsSource="{Binding ConnectionListLeft}" SelectedValue="{Binding CurrentDBNameLeft, Mode=TwoWay}"  VerticalAlignment="Center"></ComboBox>
+
+            <!-- midt progress bar-->
+            <ProgressBar Grid.Column="1" Width="auto" Name="ActionProgressBaren" Minimum="0" 
                      Maximum="{Binding FetchRowCountGlobal}" Value="{Binding Progress}" Foreground="{Binding PBarColorBrush}"/>
-        <TextBlock Grid.Row="4" Grid.ColumnSpan="3" Name="txtblockActionprogressbar" Text="{Binding txtchange, Mode=TwoWay}" 
+            <TextBlock Grid.Column="1" Grid.ColumnSpan="3" Name="txtblockActionprogressbar" Text="{Binding txtchange, Mode=TwoWay}" 
                    FontSize="10" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+            
+            <!-- Højre dropdown menu -->
+            <!-- Drop down liste for at skifte forbindelser -->
+            <ComboBox Grid.Column="2" ItemsSource="{Binding ConnectionListRight}" SelectedValue="{Binding CurrentDBNameRight, Mode=TwoWay}"  VerticalAlignment="Center"></ComboBox>
+
+        </Grid>
+
         <Image Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" 
                Source="/Resources/compare_table_icon.png"></Image>
     </Grid>

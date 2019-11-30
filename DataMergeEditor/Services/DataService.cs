@@ -4,6 +4,7 @@ using DataMergeEditor.View.Windows.Log;
 using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace DataMergeEditor.Services
@@ -11,6 +12,7 @@ namespace DataMergeEditor.Services
     public class DataService : ViewModelBase, IDataService
     {
         public Dictionary<string,IDataConnection> ConnectionList { get; set; } = new Dictionary<string, IDataConnection>();
+        public ObservableCollection<string> ConnectionListNames { get; set; } = new ObservableCollection<string>();
         public string LogLocation { get; set; }
         public bool AskOnInsert { get; set; }
         public bool AskOnDrop { get; set; }
