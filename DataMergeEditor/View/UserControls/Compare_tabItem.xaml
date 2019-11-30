@@ -15,7 +15,7 @@
             <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="140"/>
-            <RowDefinition Height="15"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -430,8 +430,8 @@
             <!-- midt progress bar-->
             <ProgressBar Grid.Column="1" Width="auto" Name="ActionProgressBaren" Minimum="0" 
                      Maximum="{Binding FetchRowCountGlobal}" Value="{Binding Progress}" Foreground="{Binding PBarColorBrush}"/>
-            <TextBlock Grid.Column="1" Grid.ColumnSpan="3" Name="txtblockActionprogressbar" Text="{Binding txtchange, Mode=TwoWay}" 
-                   FontSize="10" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+            <TextBlock Grid.Column="1"  Name="txtblockActionprogressbar" Text="{Binding txtchange, Mode=TwoWay}" 
+                   FontSize="10" Foreground="Black" VerticalAlignment="Center"  TextAlignment="Center"></TextBlock>
             
             <!-- Højre dropdown menu -->
             <!-- Drop down liste for at skifte forbindelser -->

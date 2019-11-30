@@ -13,7 +13,7 @@
             <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="150" MinHeight="100" MaxHeight="800"/>
-            <RowDefinition Height="15"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
@@ -300,7 +300,7 @@
                 <ColumnDefinition Width="200"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <ProgressBar  Grid.Column="0" Height="15" Width="auto" Name="ActionProgressBaren" Minimum="0" Maximum="100" 
+            <ProgressBar  Grid.Column="0"  Width="auto" Name="ActionProgressBaren" Minimum="0" Maximum="100" 
                       Value="{Binding ProgressFill, Mode=TwoWay}" Foreground="{Binding PBarColorBrush}"/>
             <TextBlock   Grid.Column="0" Height="15" Width="auto" Name="txtblockActionprogressbar" Text="{Binding txtchange, Mode=TwoWay}"
                      FontSize="10" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
