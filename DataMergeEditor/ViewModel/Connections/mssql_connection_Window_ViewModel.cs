@@ -49,6 +49,7 @@ namespace DataMergeEditor.ViewModel.Connections
         }
         //------------------- Connect button
         //-- MS Connection button
+        //-- Sender til DatabaseConnectionTreeViewModel
         private void Msconnect_button(PasswordBox passwordSecured)
         {
             MSUserPassword = passwordSecured.Password;
