@@ -4,6 +4,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using Microsoft.Win32;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -54,10 +55,10 @@ namespace DataMergeEditor.ViewModel
             }
             else
             {
-                MessageBox.Show("Please verify your connection in order to execute scripts", 
-                    "Data Merge Editor - Executing scripts",
-                      MessageBoxButton.OK,
-                      MessageBoxImage.Information);
+                MessageBox.Show($"{ConfigurationManager.AppSettings["New_script_note_verify_connection_msg"]}",
+                                $"{ConfigurationManager.AppSettings["New_script_note_execute_header"]}",
+                             MessageBoxButton.OK,
+                             MessageBoxImage.Warning);
             }
         }
 
@@ -106,10 +107,10 @@ namespace DataMergeEditor.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Only files with .sql extenstion can be opened", 
-                        "Data Merge Editor - Open script",
-                     MessageBoxButton.OK,
-                     MessageBoxImage.Information);
+                    MessageBox.Show($"{ConfigurationManager.AppSettings["New_script_note_only_sql_files_msg"]}",
+                                    $"{ConfigurationManager.AppSettings["New_script_note_open_script_header"]}",
+                                 MessageBoxButton.OK,
+                                 MessageBoxImage.Warning);
                 }
             }
         }

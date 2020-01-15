@@ -1,6 +1,7 @@
 ﻿using DataMergeEditor.DBConnect;
 using DataMergeEditor.DBConnect.Adapter;
 using DataMergeEditor.DBConnect.Data;
+using DataMergeEditor.Interfaces;
 using DataMergeEditor.Messages;
 using DataMergeEditor.Model;
 using DataMergeEditor.Services;
@@ -23,9 +24,11 @@ namespace DataMergeEditor.ViewModel
     {
         //-- Dataservice for at dele data mellem viewmodels
         private readonly IDataService dataService;
-        public DataBaseConnectionTreeViewModel(IDataService dataService)
+        private IViewService viewService;
+        public DataBaseConnectionTreeViewModel(IDataService dataService, IViewService viewService)
         {
             this.dataService = dataService;
+            this.viewService = viewService;
 
             //-- Modatger MYSQL, Oracle forbindelser etc..
             //-- Giver reference til metoden som har argumentet ConnectionMessage
@@ -371,8 +374,7 @@ namespace DataMergeEditor.ViewModel
         /// </summary>
         public void start_MSSQL_window()
         {
-            mssql_connection_window mssql_connection_window = new mssql_connection_window();
-            mssql_connection_window.Show();
+            viewService.CreateWindow(new mssql_connection_window());
         }
 
 
@@ -381,8 +383,7 @@ namespace DataMergeEditor.ViewModel
         /// </summary>
         public void start_oracle_window()
         {
-            oracle_connection_window oracle_Connection_Window = new oracle_connection_window();
-            oracle_Connection_Window.Show();
+            viewService.CreateWindow(new oracle_connection_window());
         }
 
         /// <summary>
@@ -390,8 +391,7 @@ namespace DataMergeEditor.ViewModel
         /// </summary>
         public void start_MySQL_window()
         {
-            MySQL_panel_connection_window MySQL_panel_connection_window = new MySQL_panel_connection_window();
-            MySQL_panel_connection_window.Show();
+            viewService.CreateWindow(new MySQL_panel_connection_window());
         }
     }
 }

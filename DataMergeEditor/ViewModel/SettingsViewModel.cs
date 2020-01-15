@@ -5,6 +5,7 @@ using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 using Microsoft.Win32;
 using System.Windows;
+using System.Configuration;
 
 namespace DataMergeEditor.ViewModel
 {
@@ -38,10 +39,11 @@ namespace DataMergeEditor.ViewModel
             DefaultTheme = true;
             RowLimit = 100;
             LogFile = @"C:\DME\log.txt";
-            MessageBox.Show("All settings has been set to default",
-                "DataMergeEditor - Settings message", 
-                MessageBoxButton.OK, 
-                MessageBoxImage.Information);
+            //-- Message
+            MessageBox.Show($"{ConfigurationManager.AppSettings["Settings_all_settings_reset_message"]}",
+                            $"{ConfigurationManager.AppSettings["Settings_reset_header"]}",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Information);
         }
 
         /// <summary>
@@ -150,8 +152,8 @@ namespace DataMergeEditor.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Only one theme can be active at a time",
-                        "DataMergeEditor - Theme message",
+                    MessageBox.Show($"{ConfigurationManager.AppSettings["Settings_theme_limit_message"]}",
+                        $"{ConfigurationManager.AppSettings["Settings_theme_message_header"]}",
                         MessageBoxButton.OK, 
                         MessageBoxImage.Information);
                 }
@@ -173,8 +175,8 @@ namespace DataMergeEditor.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show("Only one theme can be active at a time", 
-                        "DataMergeEditor - Theme message", 
+                    MessageBox.Show($"{ConfigurationManager.AppSettings["Settings_theme_limit_message"]}",
+                        $"{ConfigurationManager.AppSettings["Settings_theme_message_header"]}",
                         MessageBoxButton.OK,
                         MessageBoxImage.Information);
                 }

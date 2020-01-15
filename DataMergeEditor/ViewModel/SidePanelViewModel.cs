@@ -15,6 +15,8 @@ using System.Threading;
 using DataMergeEditor.DBConnect.Data.ListData;
 using System.Windows.Controls;
 using DataMergeEditor.Model.Addons;
+using System.Configuration;
+using DataMergeEditor.Interfaces;
 
 namespace DataMergeEditor.ViewModel
 {
@@ -29,7 +31,8 @@ namespace DataMergeEditor.ViewModel
         /// <summary>
         /// Dataservice for at dele data mellem viewmodels
         /// </summary>
-        public IDataService dataservice;
+        private IDataService dataservice;
+        private IViewService viewService;
 
         //-- Alle commands for click events
         public ICommand AddFilesToObservableCollectionCommand => new RelayCommand(AddFilesToListBox);
@@ -87,8 +90,9 @@ namespace DataMergeEditor.ViewModel
         /// Constructor
         /// </summary>
         /// <param name="dataService"></param>
-        public SidePanelViewModel(IDataService dataService)
+        public SidePanelViewModel(IDataService dataService, IViewService viewService)
         {
+            this.viewService = viewService;
             this.dataservice = dataService;
             //-- sætter remove knap til false
             RemoveIsEnabledBool = false;
@@ -121,8 +125,9 @@ namespace DataMergeEditor.ViewModel
         /// </summary>
         public void ShowHelpWindow()
         {
-            HelpWindow helpWindow = new HelpWindow();
-            helpWindow.Show();
+            viewService.CreateWindow(new HelpWindow());
+            //HelpWindow helpWindow = new HelpWindow();
+            //helpWindow.Show();
         }
 
         /// <summary>
@@ -257,26 +262,26 @@ namespace DataMergeEditor.ViewModel
                 }
                 else if(MainListContainer.Contains(TableItemSelected))
                 {
-                    MessageBox.Show($"Main list already contains the selected Table",
-                        "DataMergeEditor - Table transfering",
+                    MessageBox.Show($"{ConfigurationManager.AppSettings["Table_transfering_message"]}",
+                        $"{ConfigurationManager.AppSettings["Transfering_message_header"]}",
                      MessageBoxButton.OK,
                      MessageBoxImage.Warning);
                 }
                 else
                 {
-                    MessageBox.Show("Please select a valid table to transfer", 
-                        "DataMergeEditor - Table transfering",
+                    MessageBox.Show($"{ConfigurationManager.AppSettings["Table_transfering_valid_table_needed"]}",
+                        $"{ConfigurationManager.AppSettings["Transfering_message_header"]}",
                    MessageBoxButton.OK,
                    MessageBoxImage.Information);
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show($"Cannot transfer table to main list." 
+                MessageBox.Show($"{ConfigurationManager.AppSettings["Table_transfering_cannot_transfer_to_main_list"]}"
                     + Environment.NewLine 
                     + Environment.NewLine 
-                    + " Please verify your connectivity",
-                    "DataMergeEditor - Table transfering",
+                    + $"{ConfigurationManager.AppSettings["Connection_message_verify_connection"]}",
+                    $"{ConfigurationManager.AppSettings["Transfering_message_header"]}", 
                    MessageBoxButton.OK,
                    MessageBoxImage.Error);
             }
@@ -296,9 +301,9 @@ namespace DataMergeEditor.ViewModel
         /// </summary>
         public void ShowGetTablesFromDBWindow()
         {
-
-            GetTablesFromDBWindow GetTablesFromDBWindow = new GetTablesFromDBWindow();
-            GetTablesFromDBWindow.Show();
+            viewService.CreateWindow(new GetTablesFromDBWindow());
+            //GetTablesFromDBWindow GetTablesFromDBWindow = new GetTablesFromDBWindow();
+            //GetTablesFromDBWindow.Show();
         }
 
         /// <summary>
@@ -324,9 +329,9 @@ namespace DataMergeEditor.ViewModel
                         MainListContainer.Add(content);
                     }
                     else
-                    {
-                        MessageBox.Show("One or more files contains duplicated names in list.",
-                            "DataMergeEditor - Table transfering",
+                    {                       
+                        MessageBox.Show($"{ConfigurationManager.AppSettings["Table_transfering_duplicated_file_names"]}",
+                            $"{ConfigurationManager.AppSettings["Transfering_message_header"]}",
                                         MessageBoxButton.OK,
                                         MessageBoxImage.Information);
                     }

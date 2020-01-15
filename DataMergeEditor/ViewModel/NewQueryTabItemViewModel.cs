@@ -20,6 +20,7 @@ using DataMergeEditor.Interfaces.STTableCT;
 using DataMergeEditor.Services;
 using GalaSoft.MvvmLight.Messaging;
 using DataMergeEditor.View.Windows.Exports;
+using DataMergeEditor.Interfaces;
 
 //-- async tasks
 //: https://stackoverflow.com/questions/27089263/how-to-run-and-interact-with-an-async-task-from-a-wpf-gui 
@@ -79,10 +80,13 @@ namespace DataMergeEditor.ViewModel
         public ICommand GetLastKeyUpCommand => new RelayCommand(getQueryKeyUp);
         public ICommand GetLastKeyDownCommand => new RelayCommand(getQueryKeyDown);
 
-        public IDataService dataservice;
+        //-- Services
+        private IDataService dataservice;
+        private IViewService viewService;
 
-        public NewQueryTabItemViewModel(IDataService dataservice)
+        public NewQueryTabItemViewModel(IDataService dataservice, IViewService viewService)
         {
+            this.viewService = viewService;
             this.dataservice = dataservice;
             CurrentScheme = "None";
             TabItems.Add(new NewTabItemModel { Header = "ScriptNote", Content = new NewScriptNoteView() });
@@ -937,9 +941,8 @@ namespace DataMergeEditor.ViewModel
         {
             //-- setter værdien for CellValueTextString
             CellValueTextString = TableAddons.setCellValueText(TableCellisSelected);
-            var window = new ShowCellContentWindow();
-            window.DataContext = this;
-            window.Show();
+            //-- opens new window and displays the data
+            viewService.CreateWindowWithDataContext(new ShowCellContentWindow(), this);
         }
 
         /// <summary>
@@ -960,10 +963,8 @@ namespace DataMergeEditor.ViewModel
             }
             //-- setter værdien for CellValueTextString
             CellValueTextString = string.Join(System.Environment.NewLine, CleanRowIntelList);
-
-            var window = new ShowCellContentWindow();
-            window.DataContext = this;
-            window.Show();
+            //-- opens new window and displays the data
+            viewService.CreateWindowWithDataContext(new ShowCellContentWindow(), this);
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using CommonServiceLocator;
 using DataMergeEditor.DBConnect.Data.TreeData;
+using DataMergeEditor.Interfaces;
 using DataMergeEditor.Services;
 using DataMergeEditor.ViewModel.Connections;
 using DataMergeEditor.ViewModel.Log;
@@ -44,6 +45,7 @@ namespace DataMergeEditor.ViewModel
 
             //-- Registere services
             SimpleIoc.Default.Register<IDataService, DataService>();
+            SimpleIoc.Default.Register<IViewService, ViewService>();
 
             //-- Tree
             SimpleIoc.Default.Register<IOracleTree, OracleTree>();

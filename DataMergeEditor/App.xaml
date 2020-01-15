@@ -12,4 +12,5 @@
     <Application.Resources>
         <ViewModel:ViewModelLocator x:Key="Locator" d:IsDataSource="True" />
     </Application.Resources>
+
 </Application>

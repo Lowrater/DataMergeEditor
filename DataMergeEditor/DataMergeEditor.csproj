@@ -152,6 +152,7 @@
     <Compile Include="DBConnect\Data\TreeData\OracleTree.cs" />
     <Compile Include="DBConnect\Data\DataConnection.cs" />
     <Compile Include="Interfaces\IDataConnection.cs" />
+    <Compile Include="Interfaces\IViewService.cs" />
     <Compile Include="Interfaces\STTableCT\ITableContent.cs" />
     <Compile Include="Messages\ConnectionMessages.cs" />
     <Compile Include="Model\Addons\TreeAddons.cs" />
@@ -178,6 +179,7 @@
     <Compile Include="Model\Addons\TabelSearchHelper\SearchValueConverter.cs" />
     <Compile Include="Model\Addons\TableSyncHelper\ScrollSynchronizer.cs" />
     <Compile Include="Model\Addons\TextBoxHelper\TextBoxHelper.cs" />
+    <Compile Include="Services\ViewService.cs" />
     <Compile Include="ViewModel\Compare_tabItemViewModel.cs" />
     <Compile Include="ViewModel\Connections\mysql_connection_Window_ViewModel.cs" />
     <Compile Include="ViewModel\Connections\mssql_connection_Window_ViewModel.cs" />
