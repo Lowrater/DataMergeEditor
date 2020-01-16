@@ -107,7 +107,7 @@ namespace DataMergeEditor.ViewModel
                 }
                 else
                 {
-                    MessageBox.Show($"{ConfigurationManager.AppSettings["New_script_note_only_sql_files_msg"]}",
+                    MessageBox.Show($"{ConfigurationManager.AppSettings["script_only_sql_files_msg"]}",
                                     $"{ConfigurationManager.AppSettings["New_script_note_open_script_header"]}",
                                  MessageBoxButton.OK,
                                  MessageBoxImage.Warning);

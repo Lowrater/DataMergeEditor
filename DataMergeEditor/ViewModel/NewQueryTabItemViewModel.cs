@@ -21,6 +21,7 @@ using DataMergeEditor.Services;
 using GalaSoft.MvvmLight.Messaging;
 using DataMergeEditor.View.Windows.Exports;
 using DataMergeEditor.Interfaces;
+using System.Configuration;
 
 //-- async tasks
 //: https://stackoverflow.com/questions/27089263/how-to-run-and-interact-with-an-async-task-from-a-wpf-gui 
@@ -267,6 +268,7 @@ namespace DataMergeEditor.ViewModel
         /// </summary>
         public void ReplaceWordsForCommandField()
         {
+
             //-- Laver vindue instansen så den bruger DENNE aktuelle åbne fane's viewmodel, og bruger dataen hertil.
             var window = new ReplaceWordsInCommandNewQueryWindow();
             window.DataContext = this;
@@ -285,15 +287,15 @@ namespace DataMergeEditor.ViewModel
                 else
                 {
                     MessageBox.Show($"{CellValueTextString} does not exist in your command field",
-                        "DataMergeEditor - Replace word message",
+                        $"{ConfigurationManager.AppSettings["Replace_words_header"]}",
                         MessageBoxButton.OK,
                         MessageBoxImage.Information);
                 }
             }
             else
             {
-                MessageBox.Show("Command field cannot be empty",
-                    "DataMergeEditor - Replace word message",
+                MessageBox.Show($"{ConfigurationManager.AppSettings["command_field_is_empty_msg"]}",
+                    $"{ConfigurationManager.AppSettings["Replace_words_header"]}",
                     MessageBoxButton.OK,
                     MessageBoxImage.Information);
             }
@@ -408,7 +410,7 @@ namespace DataMergeEditor.ViewModel
                 TableAddons.setProgressBar(progress, ProgressBarTokenSource, ProgressBarTokenSource.Token);
                 ProgressBarTokenSource = new CancellationTokenSource();
                 MessageBox.Show("Missing connection to database",
-                    "DataMergeEditor - Apply changes message",
+                    $"{ConfigurationManager.AppSettings["table_apply_changes_header"]}",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
             }
@@ -425,18 +427,19 @@ namespace DataMergeEditor.ViewModel
                     PBarColorBrush = new SolidColorBrush(Colors.Red);
                     TableAddons.setProgressBar(progress, ProgressBarTokenSource, ProgressBarTokenSource.Token);
                     ProgressBarTokenSource = new CancellationTokenSource();
-                    MessageBox.Show("Content fields and applied content must match"
+                    MessageBox.Show($"{ConfigurationManager.AppSettings["table_content_must_match_msg"]}" 
                         + Environment.NewLine + Environment.NewLine +
                         "The error sounded like: " +
                         e.ToString().Substring(0, 250),
-                        "DataMergeEditor - Apply changes message",
-                        MessageBoxButton.OK, MessageBoxImage.Error);
+                        $"{ConfigurationManager.AppSettings["table_apply_changes_header"]}",
+                        MessageBoxButton.OK, 
+                        MessageBoxImage.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Tabel cannot have empty rows",
-                    "DataMergeEditor - Apply changes message",
+                MessageBox.Show($"{ConfigurationManager.AppSettings["table_apply_changes_msg"]}", 
+                    $"{ConfigurationManager.AppSettings["table_apply_changes_header"]}", 
                     MessageBoxButton.OK, 
                     MessageBoxImage.Information);
             }
@@ -491,7 +494,8 @@ namespace DataMergeEditor.ViewModel
                             //-- Spørger på om brugeren har ændret indstillingerne for at blive spurgt på insert statements
                             if(dataservice.AskOnInsert != false)
                             {
-                                if (MessageBox.Show("Do yu wish to review your table?", "Data Merge Editor - review table message",
+                                if (MessageBox.Show($"{ConfigurationManager.AppSettings["window_review_table_msg"]}",
+                                    $"{ConfigurationManager.AppSettings["window_review_table_header"]}",
                                     MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                                 {
                                     CurrentScheme = Query.Substring(Query.ToLower().IndexOf("into")).Split(' ')[1];
@@ -542,8 +546,10 @@ namespace DataMergeEditor.ViewModel
                             //-- Spørger om brugeren har lavet ændringer til advarselerne
                             if(dataservice.AskOnInsert != false)
                             {
-                                if (MessageBox.Show("Do yu wish to review your table?", "Data Merge Editor - review table message",
-                                   MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                                if (MessageBox.Show($"{ConfigurationManager.AppSettings["window_review_table_msg"]}", 
+                                    $"{ConfigurationManager.AppSettings["window_review_table_header"]}", 
+                                   MessageBoxButton.YesNo,
+                                   MessageBoxImage.Warning) == MessageBoxResult.Yes)
                                 {
                                     CurrentScheme = Query.Substring(Query.ToLower().IndexOf("update")).Split(' ')[1];
                                     returntable = await dataservice.ConnectionList.FirstOrDefault(x => x.Key == CurrentDBName).Value.Execute("select * from " + Query.Substring(Query.ToLower().IndexOf("update")).Split(' ')[1], progress, TableCancellationTokenSource.Token, TableCancellationTokenSource, dataservice.RowLimiter);
@@ -586,8 +592,8 @@ namespace DataMergeEditor.ViewModel
                         {
                             dataservice.ConnectionList.FirstOrDefault(x => x.Key == CurrentDBName).Value.AddToDatabase(Query, progress);
                             CurrentScheme = Query.Substring(Query.ToLower().IndexOf("table")).Split(' ')[1];
-                            MessageBox.Show($"{CurrentScheme} table successfully created", 
-                                "DataMergeEditor - table creation", 
+                            MessageBox.Show($"{CurrentScheme} table successfully created",
+                                $"{ConfigurationManager.AppSettings["command_table_creation_header"]}", 
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Information);
                             //-- Progressbar
@@ -663,13 +669,13 @@ namespace DataMergeEditor.ViewModel
                         PBarColorBrush = new SolidColorBrush(Colors.Red);
                         TableAddons.setProgressBar(progress, ProgressBarTokenSource, ProgressBarTokenSource.Token);
                         //-- resetter token sourcen
-                        ProgressBarTokenSource = new CancellationTokenSource();
-                        MessageBox.Show("ERROR: Your query must match the databaes content, an active connection and be valid in order to execute."
+                        ProgressBarTokenSource = new CancellationTokenSource(); 
+                        MessageBox.Show($"{ConfigurationManager.AppSettings["command_mismatch_with_dbs_content_msg"]}" 
                             + Environment.NewLine 
                             + Environment.NewLine
                             +"The system error sounded like: " 
                             + e.ToString().Substring(0,250),
-                            "DataMergeEditor - Database connection",
+                            $"{ConfigurationManager.AppSettings["Database_connection_header"]}", 
                             MessageBoxButton.OK, MessageBoxImage.Information);
                         return Maintable;
                     }            
@@ -694,7 +700,7 @@ namespace DataMergeEditor.ViewModel
                       + "Reset"
                       + Environment.NewLine
                       + "Help"
-                      , "DataMergeEditor - help message",
+                      , $"{ConfigurationManager.AppSettings["datamergeeditor_help_header"]}", 
                       MessageBoxButton.OK,
                       MessageBoxImage.Information);
                     return Maintable;
@@ -704,8 +710,8 @@ namespace DataMergeEditor.ViewModel
                     if (dataservice.ConnectionList.ContainsKey(Query.Substring(Query.IndexOf("to")).Split(' ')[1]))
                     {
                         CurrentDBName = Query.Substring(Query.IndexOf("to")).Split(' ')[1];
-                        MessageBox.Show($"Changed database connection to {CurrentDBName}", 
-                            "DataMergeEditor - Change database message",
+                        MessageBox.Show($"Changed database connection to {CurrentDBName}",
+                            $"{ConfigurationManager.AppSettings["Database_change_connection_header"]}",
                             MessageBoxButton.OK, 
                             MessageBoxImage.Information);
                         TableAddons.writeLogFile($"Successfully changed database to {CurrentDBName}", dataservice.LogLocation);
@@ -724,8 +730,8 @@ namespace DataMergeEditor.ViewModel
                         TableAddons.setProgressBar(progress, ProgressBarTokenSource, ProgressBarTokenSource.Token);
                         //-- resetter token sourcen
                         ProgressBarTokenSource = new CancellationTokenSource();
-                        MessageBox.Show("Invalid database choosen",
-                            "DataMergeEditor - Change database message",
+                        MessageBox.Show($"{ConfigurationManager.AppSettings["database_invalid_database"]}", 
+                            $"{ConfigurationManager.AppSettings["Database_change_connection_header"]}",
                             MessageBoxButton.OK,
                             MessageBoxImage.Information);
                         return Maintable;
@@ -738,11 +744,11 @@ namespace DataMergeEditor.ViewModel
                     TableAddons.setProgressBar(progress, ProgressBarTokenSource, ProgressBarTokenSource.Token);
                     //-- resetter token sourcen
                     ProgressBarTokenSource = new CancellationTokenSource();
-                    MessageBox.Show("Please choose an valid database connection" 
+                    MessageBox.Show($"{ConfigurationManager.AppSettings["database_invalid_database"]}"  
                         + Environment.NewLine 
                         + Environment.NewLine 
                         + "Command: Change database to xxx",
-                        "DataMergeEditor - Database connection",
+                        $"{ConfigurationManager.AppSettings["Database_connection_header"]}",
                     MessageBoxButton.OK,
                     MessageBoxImage.Information);
                     return Maintable;
@@ -755,7 +761,8 @@ namespace DataMergeEditor.ViewModel
                 TableAddons.setProgressBar(progress, ProgressBarTokenSource, ProgressBarTokenSource.Token);
                 //-- resetter token sourcen
                 ProgressBarTokenSource = new CancellationTokenSource();
-                MessageBox.Show("Query cannot be empty", "DataMergeEditor - Database connection",
+                MessageBox.Show($"{ConfigurationManager.AppSettings["sql_command_is_empty"]}",
+                    $"{ConfigurationManager.AppSettings["Database_connection_header"]}", 
                     MessageBoxButton.OK, 
                     MessageBoxImage.Information);
                 return Maintable;
@@ -799,10 +806,10 @@ namespace DataMergeEditor.ViewModel
                     TableAddons.setProgressBar(progress, ProgressBarTokenSource, ProgressBarTokenSource.Token);
                     //-- resetter token sourcen
                     ProgressBarTokenSource = new CancellationTokenSource();
-                    MessageBox.Show("Successfully executed " 
+                    MessageBox.Show($"{ConfigurationManager.AppSettings["sql_command_executed"]}"
                         + Scriptcount 
                         + " script files",
-                        "Data Merge Editor - Executing scripts",
+                        $"{ConfigurationManager.AppSettings["Execute_script_header"]}",
                          MessageBoxButton.OK,
                          MessageBoxImage.Information);
                 }
@@ -813,8 +820,8 @@ namespace DataMergeEditor.ViewModel
                     TableAddons.setProgressBar(progress, ProgressBarTokenSource, ProgressBarTokenSource.Token);
                     //-- resetter token sourcen
                     ProgressBarTokenSource = new CancellationTokenSource();
-                    MessageBox.Show("Only files with .sql extenstion can be added",
-                        "Data Merge Editor - Executing scripts",
+                    MessageBox.Show($"{ConfigurationManager.AppSettings["script_only_sql_files_msg"]}",
+                        $"{ConfigurationManager.AppSettings["Execute_script_header"]}", 
                          MessageBoxButton.OK,
                          MessageBoxImage.Information);
                 }
@@ -892,16 +899,16 @@ namespace DataMergeEditor.ViewModel
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show(e.ToString().Substring(0, 250), 
-                        "DataMergeEditor - Replace word message", 
+                    MessageBox.Show(e.ToString().Substring(0, 250),
+                        $"{ConfigurationManager.AppSettings["Replace_words_header"]}", 
                         MessageBoxButton.OK,
                         MessageBoxImage.Information);
                 }
             }
             else
             {
-               MessageBox.Show($"Table content cannot be empty", 
-                   "DataMergeEditor - Replace word message", 
+               MessageBox.Show($"{ConfigurationManager.AppSettings["word_replace_table_is_empty_msg"]}", 
+                   $"{ConfigurationManager.AppSettings["Replace_words_header"]}", 
                    MessageBoxButton.OK, 
                    MessageBoxImage.Information);
             }
@@ -942,7 +949,7 @@ namespace DataMergeEditor.ViewModel
             //-- setter værdien for CellValueTextString
             CellValueTextString = TableAddons.setCellValueText(TableCellisSelected);
             //-- opens new window and displays the data
-            viewService.CreateWindowWithDataContext(new ShowCellContentWindow(), this);
+            viewService.CreateWindow(new ShowCellContentWindow(), this);
         }
 
         /// <summary>
@@ -964,7 +971,7 @@ namespace DataMergeEditor.ViewModel
             //-- setter værdien for CellValueTextString
             CellValueTextString = string.Join(System.Environment.NewLine, CleanRowIntelList);
             //-- opens new window and displays the data
-            viewService.CreateWindowWithDataContext(new ShowCellContentWindow(), this);
+            viewService.CreateWindow(new ShowCellContentWindow(), this);
         }
 
         /// <summary>
@@ -1021,8 +1028,8 @@ namespace DataMergeEditor.ViewModel
             }
             else
             {
-                MessageBox.Show("It's not possible to remove the default taps", 
-                    "DataMergeEditor - Removing tabs", 
+                MessageBox.Show($"{ConfigurationManager.AppSettings["tabs_defaults_cannot_be_removed"]}",
+                    $"{ConfigurationManager.AppSettings["Removing_tabs_script_note_header"]}", 
                     MessageBoxButton.OK, 
                     MessageBoxImage.Information);
             }

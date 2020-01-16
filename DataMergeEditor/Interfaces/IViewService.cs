@@ -9,7 +9,8 @@ namespace DataMergeEditor.Interfaces
 {
    public interface IViewService
     {
-        void CreateWindowWithDataContext(Window window, object datacontext);
         void CreateWindow(Window window);
+        void CreateWindow(Window window, object datacontext);
+
     }
 }

@@ -302,8 +302,6 @@ namespace DataMergeEditor.ViewModel
         public void ShowGetTablesFromDBWindow()
         {
             viewService.CreateWindow(new GetTablesFromDBWindow());
-            //GetTablesFromDBWindow GetTablesFromDBWindow = new GetTablesFromDBWindow();
-            //GetTablesFromDBWindow.Show();
         }
 
         /// <summary>
