@@ -46,11 +46,13 @@ namespace DataMergeEditor.ViewModel
             //-- Registere services
             SimpleIoc.Default.Register<IDataService, DataService>();
             SimpleIoc.Default.Register<IViewService, ViewService>();
+            SimpleIoc.Default.Register<IAppService, AppService>();
 
             //-- Tree
             SimpleIoc.Default.Register<IOracleTree, OracleTree>();
             SimpleIoc.Default.Register<IMysqlTree, MysqlTree>();
             SimpleIoc.Default.Register<IMssqlTree, MssqlTree>();
+
         }
 
         //--  ViewModels

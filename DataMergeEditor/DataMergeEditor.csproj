@@ -173,12 +173,14 @@
     <Compile Include="Model\SettingsWindowModel.cs" />
     <Compile Include="Model\SidePanelListModel.cs" />
     <Compile Include="Model\Addons\TableAddons.cs" />
+    <Compile Include="Services\AppService.cs" />
     <Compile Include="Services\DataService.cs" />
     <Compile Include="Interfaces\IDataService.cs" />
     <Compile Include="Model\Addons\TabelSearchHelper\DataGridTextSearch.cs" />
     <Compile Include="Model\Addons\TabelSearchHelper\SearchValueConverter.cs" />
     <Compile Include="Model\Addons\TableSyncHelper\ScrollSynchronizer.cs" />
     <Compile Include="Model\Addons\TextBoxHelper\TextBoxHelper.cs" />
+    <Compile Include="Interfaces\IAppService.cs" />
     <Compile Include="Services\ViewService.cs" />
     <Compile Include="ViewModel\Compare_tabItemViewModel.cs" />
     <Compile Include="ViewModel\Connections\mysql_connection_Window_ViewModel.cs" />

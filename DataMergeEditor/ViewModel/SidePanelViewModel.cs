@@ -33,6 +33,7 @@ namespace DataMergeEditor.ViewModel
         /// </summary>
         private IDataService dataservice;
         private IViewService viewService;
+        private IAppService appService;
 
         //-- Alle commands for click events
         public ICommand AddFilesToObservableCollectionCommand => new RelayCommand(AddFilesToListBox);
@@ -90,10 +91,11 @@ namespace DataMergeEditor.ViewModel
         /// Constructor
         /// </summary>
         /// <param name="dataService"></param>
-        public SidePanelViewModel(IDataService dataService, IViewService viewService)
+        public SidePanelViewModel(IDataService dataService, IViewService viewService, IAppService appService)
         {
             this.viewService = viewService;
             this.dataservice = dataService;
+            this.appService = appService;
             //-- sætter remove knap til false
             RemoveIsEnabledBool = false;
             ActiveConnection = false;
@@ -126,8 +128,6 @@ namespace DataMergeEditor.ViewModel
         public void ShowHelpWindow()
         {
             viewService.CreateWindow(new HelpWindow());
-            //HelpWindow helpWindow = new HelpWindow();
-            //helpWindow.Show();
         }
 
         /// <summary>
@@ -262,26 +262,26 @@ namespace DataMergeEditor.ViewModel
                 }
                 else if(MainListContainer.Contains(TableItemSelected))
                 {
-                    MessageBox.Show($"{ConfigurationManager.AppSettings["Table_transfering_message"]}",
-                        $"{ConfigurationManager.AppSettings["Transfering_message_header"]}",
+                    MessageBox.Show(appService.transfer_listExistInSelectedTable_msg,
+                         appService.transfering_Message_header,
                      MessageBoxButton.OK,
                      MessageBoxImage.Warning);
                 }
                 else
                 {
-                    MessageBox.Show($"{ConfigurationManager.AppSettings["Table_transfering_valid_table_needed"]}",
-                        $"{ConfigurationManager.AppSettings["Transfering_message_header"]}",
+                    MessageBox.Show(appService.transfer_valid_table_needed_msg,
+                        appService.transfering_Message_header,
                    MessageBoxButton.OK,
                    MessageBoxImage.Information);
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show($"{ConfigurationManager.AppSettings["Table_transfering_cannot_transfer_to_main_list"]}"
+                MessageBox.Show(appService.transfer_cannot_transfer_to_main_list_msg
                     + Environment.NewLine 
                     + Environment.NewLine 
-                    + $"{ConfigurationManager.AppSettings["Connection_message_verify_connection"]}",
-                    $"{ConfigurationManager.AppSettings["Transfering_message_header"]}", 
+                    + appService.transfer_verify_connection_msg,
+                    appService.transfering_Message_header, 
                    MessageBoxButton.OK,
                    MessageBoxImage.Error);
             }
@@ -328,8 +328,8 @@ namespace DataMergeEditor.ViewModel
                     }
                     else
                     {                       
-                        MessageBox.Show($"{ConfigurationManager.AppSettings["Table_transfering_duplicated_file_names"]}",
-                            $"{ConfigurationManager.AppSettings["Transfering_message_header"]}",
+                        MessageBox.Show(appService.transfer_dupliced_file_names_msg,
+                            appService.transfering_Message_header,
                                         MessageBoxButton.OK,
                                         MessageBoxImage.Information);
                     }
