@@ -82,6 +82,7 @@ namespace DataMergeEditor.ViewModel.Connections
                     }),
                     OracleDatabase
                 ));
+
             void onSuccess()
             {
                 //-- Lukker alle Windows som har Denne klasse som indhold.
@@ -99,7 +100,7 @@ namespace DataMergeEditor.ViewModel.Connections
 
             void onFailure()
             {
-                TableAddons.writeLogFile(@"Failed connecting to {OracleDatabase}", dataService.LogLocation);
+                TableAddons.writeLogFile($"Failed connecting to {OracleDatabase}", dataService.LogLocation);
                 MessageBox.Show($"failed connecting to {OracleDatabase}", "DataMergeEditor - Database connection",
                     MessageBoxButton.OK, MessageBoxImage.Information);
             }

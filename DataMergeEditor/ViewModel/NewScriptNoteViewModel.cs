@@ -99,8 +99,7 @@ namespace DataMergeEditor.ViewModel
                 {
                     FileInfo sqlfil = new FileInfo(file.FileName);
                     string scriptet = sqlfil.OpenText().ReadToEnd();
-                    TableAddons.writeLogFile($"{file.FileName} sql script has been opened in the ScriptNote",
-                        dataservice.LogLocation);
+                    TableAddons.writeLogFile($"{file.FileName} sql script has been opened in the ScriptNote", dataservice.LogLocation);
 
                     ScriptContentString = scriptet;
                     sqlfil.OpenText().Close();

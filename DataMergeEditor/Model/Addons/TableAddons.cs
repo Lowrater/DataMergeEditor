@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Configuration;
 using System.Data;
 using System.IO;
 using System.Linq;
@@ -659,5 +660,8 @@ namespace DataMergeEditor.Model
             //-- returnere tabellen
             return table;
         }
+
+
+
     }
 }

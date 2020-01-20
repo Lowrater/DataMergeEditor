@@ -792,9 +792,7 @@ namespace DataMergeEditor.ViewModel
                         if (Query.ToLower().StartsWith("select"))
                         {
                             QueryCommandRight = "";
-                            var xRightTable = await dataservice.ConnectionList.FirstOrDefault(x =>
-                            x.Key == CurrentDBNameRight).Value.Execute(Query, progress, 
-                            TableCancellationTokenSourceRight.Token, TableCancellationTokenSourceRight, dataservice.RowLimiter);
+                            var xRightTable = await dataservice.ConnectionList.FirstOrDefault(x => x.Key == CurrentDBNameRight).Value.Execute(Query, progress, TableCancellationTokenSourceRight.Token, TableCancellationTokenSourceRight, dataservice.RowLimiter);
                             FetchRowCountGlobal = xRightTable.Rows.Count;
                             xRightRowsCount = xRightTable.Rows.Count;
                             xRightColumnsCount = xRightTable.Columns.Count;

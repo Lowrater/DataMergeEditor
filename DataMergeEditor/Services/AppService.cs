@@ -18,5 +18,7 @@ namespace DataMergeEditor.Services
         public string transfer_verify_connection_msg => ConfigurationManager.AppSettings["Connection_message_verify_connection"];
         public string transfer_dupliced_file_names_msg => ConfigurationManager.AppSettings["Table_transfering_duplicated_file_names"];
 
+        //-- replace word messages
+
     }
 }

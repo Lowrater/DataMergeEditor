@@ -401,17 +401,16 @@ namespace DataMergeEditor.ViewModel
             });
 
             //-- Det nye popup vindue
-            var exp = new ExportToExternalDatabaseWindowMain();
+            var exportToExternalDatabaseWindow = new ExportToExternalDatabaseWindowMain();
 
             //-- Når brugeren har sagt OK, export griddet til en ny database
             //-- SelectedMarkedText = databasenavn
-            exp.DataContext = this;
-            if (exp.ShowDialog() == true)
+            exportToExternalDatabaseWindow.DataContext = this;
+            if (exportToExternalDatabaseWindow.ShowDialog() == true)
             {
                 try
                 {
-                    dataservice.ConnectionList.FirstOrDefault(x => x.Key 
-                    == SelectedDatabaseText).Value.ExportToExternalDatabase(DatatableMerger, CreateTableEXP, false, "");
+                    dataservice.ConnectionList.FirstOrDefault(x => x.Key == SelectedDatabaseText).Value.ExportToExternalDatabase(DatatableMerger, CreateTableEXP, false, "");
                     //-- log
                     TableAddons.writeLogFile($"Exportet main grid to {dataservice.ConnectionList.FirstOrDefault(x => x.Key == SelectedDatabaseText).Value.Name} as table {CreateTableEXP}", dataservice.LogLocation);
                     //-- Progressbar

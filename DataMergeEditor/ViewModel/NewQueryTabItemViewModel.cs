@@ -90,7 +90,7 @@ namespace DataMergeEditor.ViewModel
             this.viewService = viewService;
             this.dataservice = dataservice;
             CurrentScheme = "None";
-            TabItems.Add(new NewTabItemModel { Header = "ScriptNote", Content = new NewScriptNoteView() });
+            ScriptNoteTabItems.Add(new NewTabItemModel { Header = "ScriptNote", Content = new NewScriptNoteView() });
             FetchRowCount = 100;
             SelectedMarkedText = "";
             CommandNumbIndex = 1;
@@ -314,7 +314,7 @@ namespace DataMergeEditor.ViewModel
         /// <summary>
         /// Tab items for scriptnote
         /// </summary>
-        public ObservableCollection<NewTabItemModel> TabItems
+        public ObservableCollection<NewTabItemModel> ScriptNoteTabItems
         {
             get => _newQueryModel._tabItems;
             set => Set(ref _newQueryModel._tabItems, value);
@@ -789,16 +789,16 @@ namespace DataMergeEditor.ViewModel
 
                 if (file.FileName.Contains(".sql"))
                 {
-                    foreach (var filenameren in file.FileNames)
+                    foreach (var filename in file.FileNames)
                     {
-                        FileInfo sqlfil = new FileInfo(filenameren);
-                        string scriptet = sqlfil.OpenText().ReadToEnd();
+                        FileInfo sqlfile = new FileInfo(filename);
+                        string scriptet = sqlfile.OpenText().ReadToEnd();
                         //-- udføre mod databasen
                         dataservice.ConnectionList.FirstOrDefault(x => x.Key == CurrentDBName).Value.UnknownReadCreateToDatabaes(scriptet);
                         //-- logger scriptet kørt
                         TableAddons.writeLogFile("Executed script:" + scriptet, dataservice.LogLocation);
                         //-- åbner / lukker scriptet
-                        sqlfil.OpenText().Close();
+                        sqlfile.OpenText().Close();
                         Scriptcount++;
                     }
                     //-- Progressbar
@@ -1012,7 +1012,7 @@ namespace DataMergeEditor.ViewModel
 
             if (RenameTabHeaderNewQueryWindow.ShowDialog() == true)
             {
-                TabItems[SelectedScriptNoteIndex].Header = NewScriptNoteName;
+                ScriptNoteTabItems[SelectedScriptNoteIndex].Header = NewScriptNoteName;
             }
         }
 
@@ -1021,9 +1021,9 @@ namespace DataMergeEditor.ViewModel
         /// </summary>
         public void RemoveSelectedtab()
         {
-            if (!TabItems.Count.Equals(1) && SelectedScriptNoteIndex != 0)
+            if (!ScriptNoteTabItems.Count.Equals(1) && SelectedScriptNoteIndex != 0)
             {
-                TabItems.RemoveAt(SelectedScriptNoteIndex);
+                ScriptNoteTabItems.RemoveAt(SelectedScriptNoteIndex);
                 xScriptnoteQueryIndex--;
             }
             else
@@ -1043,7 +1043,7 @@ namespace DataMergeEditor.ViewModel
             xScriptnoteQueryIndex++;
             var header = $"ScriptNote {xScriptnoteQueryIndex}";
             var item = new NewTabItemModel { Header = header, Content = new NewScriptNoteView() };
-            TabItems.Add(item);
+            ScriptNoteTabItems.Add(item);
         }
 
 
@@ -1222,12 +1222,7 @@ namespace DataMergeEditor.ViewModel
                     {
                         FilteredTable = Maintable;
                     }                
-                }
-            else
-            {
-                //-- Do nothing
-                //-- Only coloring the table
-            }          
+            }        
         }
     }
 }

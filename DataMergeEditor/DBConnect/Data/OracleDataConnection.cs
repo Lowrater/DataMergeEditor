@@ -181,8 +181,7 @@ namespace DataMergeEditor.DBConnect.Data
         /// <param name="source"></param>
         /// <param name="rowlimiter"></param>
         /// <returns></returns>
-        public async override Task<DataTable> Execute(string command, IProgress<int> progress, 
-            CancellationToken cancellationToken, CancellationTokenSource source, int rowlimiter)
+        public async override Task<DataTable> Execute(string command, IProgress<int> progress, CancellationToken cancellationToken, CancellationTokenSource source, int rowlimiter)
         {
             var cmd = new OdbcCommand(command, connection);
             var RecapUpdatedTable = new DataTable();
