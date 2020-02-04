@@ -23,10 +23,8 @@
         <!--This is the DataGrid from DataGridVew.xaml-->
         <userControls:MainTableView Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
         </userControls:MainTableView>
-        <userControls:SidePanelVeiw Grid.Column="0"  >
-        </userControls:SidePanelVeiw>
+        <userControls:SidePanelVeiw Grid.Column="0"></userControls:SidePanelVeiw>
         <!-- grid splitter -->
-        <GridSplitter  VerticalAlignment="Stretch" HorizontalAlignment="right" 
-                       Grid.Column="0" Background="LightGray" Width="5"/>
+        <GridSplitter  VerticalAlignment="Stretch" HorizontalAlignment="right"  Grid.Column="0" Background="LightGray" Width="5"/>
     </Grid>
 </Window>

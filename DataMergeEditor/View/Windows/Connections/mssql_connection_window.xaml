@@ -6,7 +6,7 @@
         xmlns:ViewModel="clr-namespace:DataMergeEditor.ViewModel.Connections"
         mc:Ignorable="d"
         DataContext="{Binding MsSql,Source={StaticResource Locator}}"
-        Title="Data Merge editor: MSSQL window" Height="403" Width="330" ResizeMode="NoResize">
+        Title="Data merge editor: MSSQL window" Height="403" Width="330" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>

@@ -89,7 +89,7 @@ namespace DataMergeEditor.ViewModel.Connections
                 //-- Er virkelig dårlig ting at gøre, hvis man har flere vinduer åbne, men ikke udfyldte.
                 foreach (Window window in Application.Current.Windows)
                 {
-                    if (window.DataContext == this)
+                    if (window.Title.Equals("Data merge editor: oracle window"))
                     {
                         window.Close();
                     }

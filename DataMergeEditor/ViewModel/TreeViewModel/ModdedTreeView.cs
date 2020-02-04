@@ -6,8 +6,7 @@ namespace DataMergeEditor.ViewModel.TreeViewModel
 {
     public class ModdedTreeView : TreeView
     {
-        public ModdedTreeView()
-            : base()
+        public ModdedTreeView() : base()
         {
             this.SelectedItemChanged += new RoutedPropertyChangedEventHandler<object>(___ICH);
         }
